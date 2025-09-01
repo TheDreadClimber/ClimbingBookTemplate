@@ -1,0 +1,52 @@
+\setcounter{page}{-1}
+
+\thispagestyle{empty}
+\newgeometry{left=0mm, right=0mm, top=0mm, bottom=0mm} % use full page
+
+\begin{figure}[p] % [p] Place it on a page containing only floats
+\includegraphics[height=\pageheight]{front_cover.png}
+\end{figure}
+\restoregeometry % revert to the original geometry from now on
+
+\thispagestyle{empty}
+
+\frontmatter
+\begin{titlepage}
+    \thispagestyle{empty}
+    \begin{center}
+        \LARGE
+        \textbf{Title}
+        
+        \vspace*{1.5in}
+        \Large
+        First Edition
+        
+        \vspace*{1.5in}
+        \Large
+        Author
+        
+        \vspace*{\fill}
+        \includegraphics[width=2in]{jr_press.png}
+    \end{center}
+    \newpage
+    \thispagestyle{empty}
+    \begin{center}
+        \vspace*{\fill}
+        Published By
+        
+        Foo Press
+        
+        City, St
+        
+        Copyright \copyright\; 2025
+
+        ISBN 666
+    \end{center}
+\end{titlepage}
+
+% The second page of ToC still has a page number. I can't figure out how to
+% remove it. Either that, or we should start front matter page numbering with
+% the first page of the ToC.
+\thispagestyle{empty}
+\tableofcontents
+\thispagestyle{empty}
