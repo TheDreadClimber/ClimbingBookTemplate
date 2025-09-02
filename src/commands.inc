@@ -112,25 +112,55 @@
     \\#3\\#4' #5 Bolts \textit{FA: #6}\bigskip\\%
 }
 
-\newcommand*\boulderproblem[5]{%
-    \StrLeft{#2}{1}[\charone]%
-    \def\zeroval{0}%
-    \def\period{1}
-    \ifx\charone\zeroval% We have a grade < 10
-        \StrMid{#2}{3}{3}[\slashval]
-        \StrMid{#2}{2}{2}[\lowgrade]%
-        \ifx\slashval\period
-            \StrMid{#2}{4}{4}[\highgrade]%
-            \def\vgrade{V\lowgrade/\highgrade}
-        \else
-            \def\vgrade{V\lowgrade}%
-        \fi
-    \else%
-        \def\vgrade{V#2}%
-    \fi%
-    \index[boulderproblemsbygrade]{{V#2}@\vgrade!#1}%
+\makeatletter
+% Lookup macro: expands to the numeric key
+\newcommand*\vsortorder[1]{\@nameuse{vsort@#1}}
+
+% === Grade table ===
+\expandafter\def\csname vsort@V0\endcsname{000}
+\expandafter\def\csname vsort@V1\endcsname{010}
+\expandafter\def\csname vsort@V1/2\endcsname{015}
+\expandafter\def\csname vsort@V2\endcsname{020}
+\expandafter\def\csname vsort@V2/3\endcsname{025}
+\expandafter\def\csname vsort@V3\endcsname{030}
+\expandafter\def\csname vsort@V3/4\endcsname{035}
+\expandafter\def\csname vsort@V4\endcsname{040}
+\expandafter\def\csname vsort@V4/5\endcsname{045}
+\expandafter\def\csname vsort@V5\endcsname{050}
+\expandafter\def\csname vsort@V5/6\endcsname{055}
+\expandafter\def\csname vsort@V6\endcsname{060}
+\expandafter\def\csname vsort@V6/7\endcsname{065}
+\expandafter\def\csname vsort@V7\endcsname{070}
+\expandafter\def\csname vsort@V7/8\endcsname{075}
+\expandafter\def\csname vsort@V8\endcsname{080}
+\expandafter\def\csname vsort@V8/9\endcsname{085}
+\expandafter\def\csname vsort@V9\endcsname{090}
+\expandafter\def\csname vsort@V9/10\endcsname{095}
+\expandafter\def\csname vsort@V10\endcsname{100}
+\expandafter\def\csname vsort@V10/11\endcsname{105}
+\expandafter\def\csname vsort@V11\endcsname{110}
+\expandafter\def\csname vsort@V11/12\endcsname{115}
+\expandafter\def\csname vsort@V12\endcsname{120}
+\expandafter\def\csname vsort@V12/13\endcsname{125}
+\expandafter\def\csname vsort@V13\endcsname{130}
+\expandafter\def\csname vsort@V13/14\endcsname{135}
+\expandafter\def\csname vsort@V14\endcsname{140}
+\expandafter\def\csname vsort@V14/15\endcsname{145}
+\expandafter\def\csname vsort@V15\endcsname{150}
+\expandafter\def\csname vsort@V15/16\endcsname{155}
+\expandafter\def\csname vsort@V16\endcsname{160}
+\expandafter\def\csname vsort@Project\endcsname{180}
+% === Fallback if grade is unknown ===
+\expandafter\def\csname vsort@\endcsname{999}
+\makeatother
+
+\newcommand*\boulderproblem[4]{%
+  \begingroup
+    \edef\vsort{\vsortorder{#2}}% expand to plain text
+    \index[boulderproblemsbygrade]{\vsort@#2!#1}% sort by \vsort, display #2
     \index{#1}%
     {\color{ForestGreen}\cstep}%
-    \textbf{#1} %
-    {\fontfamily{phv}\selectfont \vgrade}\\#3\\#4' \textit{FA: #5}\bigskip\\%
+    \textbf{#1} {\fontfamily{phv}\selectfont #2}\\%
+    #3\\\textit{FA: #4}\par\bigskip
+  \endgroup
 }
