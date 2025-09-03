@@ -32,8 +32,7 @@ config.inc.           % Set values for the dynamic content in the template.
 2. **Edit the content files**  
    - `chapters.tex` → Add or organize your main book chapters.  
    - `Introduction.tex` → Write the book’s introduction.  
-   - `frontmatter.tex` → Customize title page, table of contents, dedication, etc.  
-   - `backmatter.tex` → Add bibliography, index, or appendices.  
+   - `config.inc` → Specify the configurable options.
 
 3. **Compile the book**  
    Run LaTeX (e.g., `pdflatex` or `xelatex`) on `main.tex`:  
@@ -62,7 +61,7 @@ config.inc.           % Set values for the dynamic content in the template.
 ## 🧗 Tips  
 
 - Use `\chapter{}` for new chapters.  
-- Use `\section{}` and `\subsection{}` for structure within chapters.  
+- Use `\boulder{}` and `\cliff{}` to contain probelems and routes.  
 - Cross-reference routes, figures, and tables using `\label{}` and `
 ef{}`.  
 
