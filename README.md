@@ -1,8 +1,8 @@
 # Climbing Book LaTeX Template  
 
-This repository provides a **LaTeX template** for creating a climbing book. It is designed to give you a clean and structured starting point for organizing your climbing guide, stories, or technical documentation in book form.  
+This repository provides a **LaTeX template** for creating a climbing guidebook. It is designed to give you a clean and structured starting point for documenting crag and route documentation in book form.  
 
-The project uses the standard `book` class in LaTeX, with predefined files for chapters, introduction, front matter, and back matter.  
+The project uses the standard `book` class in LaTeX, with separate files for chapters, introduction, front matter, and back matter.  
 
 ---
 
@@ -23,7 +23,7 @@ The project uses the standard `book` class in LaTeX, with predefined files for c
 
 1. **Clone this repository**  
    ```bash
-   git clone https://github.com/yourusername/climbing-book-template.git
+   git clone https://github.com/DreadClimber/climbing-book-template.git
    cd climbing-book-template
    ```
 
