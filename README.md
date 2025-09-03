@@ -10,11 +10,11 @@ The project uses the standard `book` class in LaTeX, with separate files for cha
 
 ```
 src
-├── main.tex          % The main LaTeX file – compile this one
-├── Introduction.tex  % Your introduction section
-├── frontmatter.tex   % Content before the main chapters (e.g., title page, TOC)
-├── backmatter.tex    % Content after the main chapters (e.g., bibliography, index)
-└── figures/          % (Optional) Directory for images
+ ├── main.tex          % The main LaTeX file – compile this one
+ ├── Introduction.tex  % Your introduction section
+ ├── frontmatter.tex   % Content before the main chapters (e.g., title page, TOC)
+ ├── backmatter.tex    % Content after the main chapters (e.g., bibliography, index)
+ └── figures/          % (Optional) Directory for images
 chapters.tex          % Define and include your chapters here
 config.inc.           % Set values for the dynamic content in the template.
 ```
