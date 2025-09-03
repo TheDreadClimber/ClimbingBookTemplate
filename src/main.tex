@@ -1,25 +1,29 @@
 \documentclass[12pt,twocolumn,a4paper]{book}
-%\documentclass[fontsize=12pt,twoside,openright]{scrbook}
 
 \usepackage[english]{babel}
 \usepackage{circledsteps}
-%\usepackage[a4paper,showframe]{geometry}
 \usepackage[a4paper]{geometry}
 \usepackage{graphicx}
 \usepackage[xindy]{imakeidx}
 \usepackage{multicol}
 \usepackage{tikz}
 \usepackage{wrapfig}
-\usepackage{titlesec}
 \usepackage[dvipsnames]{xcolor}
-\usepackage{xstring}
-\titlespacing*{\chapter}{0pt}{*-4}{20pt}
+\usepackage{etoolbox}
+
+% Remove paragraph indentations.
 \setlength\parindent{0pt}
+
 \input{indices.inc}
 \input{commands.inc}
 
 % Set the TOC's name to "Table of Contents" instead of "Contents"
 \setlocalecaption{english}{contents}{Table of Contents}
+
+% change the 50pt vertical skip to 0pt.
+\makeatletter
+\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{\vspace*{0\p@}}{}{}
+\makeatother
 
 \begin{document}
 \include{frontmatter}
