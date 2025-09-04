@@ -1,10 +1,10 @@
-\newcommand*\boulder[4]{
-    \subsection*{#1}#2#3
-    \subsection*{Problems}
-    \begin{multicols}{2}%
-        \resetcstep#4
-    \end{multicols}
+\newcommand*\crag[4]{%
+% A Crag can contain any mix of walls, boulder fields, or boulders.
+% name, description, header, content
+    \section*{#1}
+    \addcontentsline{toc}{section}{#1}#2#3#4%
 }
+
 \newcommand*\boulderfield[4]{%
 % A boulder field contains boulders.
 % name, description, header, content
@@ -12,8 +12,27 @@
     \addcontentsline{toc}{section}{#1}#2#3
     \paragraph{Boulders}#4%
 }
-\newcommand*\climbcontainer[8]{
+
+\newcommand*\boulder[4]{
+    \subsection*{#1}#2#3
+    \subsection*{Problems}
+    \begin{multicols}{2}%
+        \resetcstep#4
+    \end{multicols}
 }
+
+\newcommand*\cliff[4]{%
+% A cliff primarily contains routes, but can have boulder problems. Ideally there would be sector separators for the taller sectors ans shorter.
+% name, description, header, content
+    \subsection*{#1}
+    \addcontentsline{toc}{section}{#1}#2#3%
+    \subsection*{Routes}
+    \begin{multicols}{2}%
+        \resetcstep
+        #4
+    \end{multicols}
+}
+
 \newcommand*\climbheader[4]{%
     \def\tempa{}%
     \def\tempb{#1}%
@@ -36,24 +55,6 @@
     \else
         \paragraph{Conditions}#4
     \fi
-}
-\newcommand*\crag[4]{%
-% A Crag can contain any mix of walls, boulder fields, or boulders.
-% name, description, header, content
-    \section*{#1}
-    \addcontentsline{toc}{section}{#1}#2#3#4%
-}
-
-\newcommand*\cliff[4]{%
-% A cliff primarily contains routes, but can have boulder problems. Ideally there would be sector separators for the taller sectors ans shorter.
-% name, description, header, content
-    \section*{#1}
-    \addcontentsline{toc}{section}{#1}#2#3%
-    \section*{Routes}
-    \begin{multicols}{2}%
-        \resetcstep
-        #4
-    \end{multicols}
 }
 
 % Add a little more space around the numbers in the \Circled
