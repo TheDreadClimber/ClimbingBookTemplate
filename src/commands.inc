@@ -1,3 +1,9 @@
+\newcommand*\climbingregion[1]{
+  \chapter*{#1}
+  \addcontentsline{toc}{chapter}{#1}
+  \markboth{#1}{#1}
+}
+
 \newcommand*\crag[4]{%
 % A Crag can contain any mix of walls, boulder fields, or boulders.
 % name, description, header, content
