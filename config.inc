@@ -2,5 +2,5 @@
 \author{Author}
 \date{\today}
 \def\publisher{Publisher}
-\def\publisherlogo{}
+\def\publisherlogo{jr_press.png}
 \def\bookedition{First}
