@@ -3,4 +3,4 @@
 \date{\today}
 \def\publisher{Publisher}
 \def\publisherlogo{}
-
+\def\bookedition{First}
