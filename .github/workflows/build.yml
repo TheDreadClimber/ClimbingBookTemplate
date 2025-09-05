@@ -6,12 +6,21 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v4
+      - name: fetch template
+        run: |
+          wget https://github.com/TheDreadClimber/ClimbingBookTemplate/archive/refs/heads/import.zip
+          unzip import.zip
+      - name: prepare template
+        run: |
+          rm ClimbingBookTemplate-import/chapters.tex
+          rm ClimbingBookTemplate-import/config.inc
+          cp src/* ClimbingBookTemplate-import/
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: src/main.tex
+          root_file: ClimbingBookTemplate-import/src/main.tex
         env:
-          TEXINPUTS: ".:./src//:"
+          TEXINPUTS: ".:./ClimbingBookTemplate-import//:"
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
         with:
