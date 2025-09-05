@@ -11,22 +11,23 @@
 \thispagestyle{empty}
 
 \frontmatter
+\makeatletter
 \begin{titlepage}
     \thispagestyle{empty}
     \begin{center}
         \LARGE
-        \textbf{\booktitle}
+        \@title
         
         \vspace*{1.5in}
         \Large
-        First Edition
+        \bookedition Edition
         
         \vspace*{1.5in}
         \Large
-        Author
+        \@author
         
         \vspace*{\fill}
-        %\includegraphics[width=2in]{publisher_logo.png}
+        \includegraphics[width=2in]{\publisherlogo}
     \end{center}
     \newpage
     \thispagestyle{empty}
@@ -34,19 +35,14 @@
         \vspace*{\fill}
         Published By
         
-        Foo Press
+        \publisher
         
-        City, St
-        
-        Copyright \copyright\; 2025
+        Copyright \copyright\; \@date
 
-        ISBN 666
     \end{center}
+\makeatother
 \end{titlepage}
 
-% The second page of ToC still has a page number. I can't figure out how to
-% remove it. Either that, or we should start front matter page numbering with
-% the first page of the ToC.
 \thispagestyle{empty}
 \tableofcontents
 \thispagestyle{empty}
