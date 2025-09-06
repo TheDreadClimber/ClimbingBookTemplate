@@ -1,3 +1,17 @@
+\newcommand\frontcover[1]{
+  \def\tempa{}%
+  \def\tempb{#1}%
+  \ifx\tempa\tempb
+  \else
+    \thispagestyle{empty}
+    \newgeometry{left=0mm, right=0mm, top=0mm, bottom=0mm} % use full page
+    \begin{figure}[p] % [p] Place it on a page containing only floats
+      \includegraphics[height=\pageheight]{#1}
+    \end{figure}
+    \restoregeometry % revert to the original geometry from now on
+  \fi
+}
+
 \newcommand*\climbingregion[1]{
   \chapter*{#1}
   \addcontentsline{toc}{chapter}{#1}
