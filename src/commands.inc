@@ -176,12 +176,10 @@
 \makeatother
 
 \newcommand*\boulderproblem[4]{%
-  \begingroup
     \edef\vsort{\vsortorder{#2}}% expand to plain text
     \index[boulderproblemsbygrade]{\vsort@#2!#1}% sort by \vsort, display #2
     \index{#1}%
     {\color{ForestGreen}\cstep}%
     \textbf{#1} {\fontfamily{phv}\selectfont #2}\\%
-    #3\\\textit{FA: #4}\par\bigskip
-  \endgroup
+    #3\\\textit{FA: #4}\par\bigskip\\
 }
