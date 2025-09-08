@@ -87,8 +87,7 @@
 }
 
 \newcommand*\sportroute[6]{%
-  %\begin{minipage}{0.5\textwidth.}%
-    \index[sportroutesbygrade]{#2!#1}
+    \index[sportroutesbygrade]{#2!#1}%
     \index{#1}%
     {%
         \color{blue}%
@@ -100,7 +99,6 @@
         \selectfont #2%
     }%
     \\#3\\#4' #5 Bolts \textit{FA: #6}\bigskip\\%
-  %\end{minipage}
 }
 
 \newcommand*\tradroute[5]{%
