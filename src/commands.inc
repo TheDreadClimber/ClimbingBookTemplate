@@ -53,6 +53,17 @@
     \end{multicols}
 }
 
+\newcommand*\sector[3]{%
+% A sector is not indexed primarily contains routes, but can have boulder problems.
+% name, header, content
+    \subsubsection*{#1}#2%
+    \subsection*{Routes}
+    \begin{multicols}{2}%
+        \resetcstep
+        #3
+    \end{multicols}
+}
+
 \newcommand*\climbheader[4]{%
     %\def\tempa{}%
     \def\tempb{#1}%
