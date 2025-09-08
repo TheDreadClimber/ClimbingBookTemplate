@@ -6,7 +6,7 @@
     \thispagestyle{empty}
     \newgeometry{left=0mm, right=0mm, top=0mm, bottom=0mm} % use full page
     \begin{figure}[p] % [p] Place it on a page containing only floats
-      \includegraphics[height=\pageheight]{#1}
+      \includegraphics[width=\pagewidth,height=\pageheight]{#1}
     \end{figure}
     \restoregeometry % revert to the original geometry from now on
   \fi
