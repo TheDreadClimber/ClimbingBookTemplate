@@ -87,7 +87,7 @@
 }
 
 \newcommand*\sportroute[6]{%
-  \begin{minipage}{0.5\textwidth.}%
+  %\begin{minipage}{0.5\textwidth.}%
     \index[sportroutesbygrade]{#2!#1}
     \index{#1}%
     {%
@@ -100,7 +100,7 @@
         \selectfont #2%
     }%
     \\#3\\#4' #5 Bolts \textit{FA: #6}\bigskip\\%
-  \end{minipage}
+  %\end{minipage}
 }
 
 \newcommand*\tradroute[5]{%
@@ -180,7 +180,10 @@
     \edef\vsort{\vsortorder{#2}}% expand to plain text
     \index[boulderproblemsbygrade]{\vsort@#2!#1}% sort by \vsort, display #2
     \index{#1}%
-    {\color{ForestGreen}\cstep}%
+    {%
+      \color{ForestGreen}%
+      \cstep
+    } %
     \textbf{#1} {\fontfamily{phv}\selectfont #2}\\%
     #3\\\textit{FA: #4}\par\bigskip
   \endgroup
