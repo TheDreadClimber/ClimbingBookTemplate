@@ -1,5 +1,5 @@
 \edef\tempa{}%
-\newcommand\frontcover[1]{
+\newcommand\fullpageimage[1]{
   \edef\tempb{#1}%
   \ifx\tempa\tempb
   \else
