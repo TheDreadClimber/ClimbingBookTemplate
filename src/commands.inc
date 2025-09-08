@@ -1,6 +1,6 @@
+\edef\tempa{}%
 \newcommand\frontcover[1]{
-  \def\tempa{}%
-  \def\tempb{#1}%
+  \edef\tempb{#1}%
   \ifx\tempa\tempb
   \else
     \thispagestyle{empty}
@@ -54,7 +54,7 @@
 }
 
 \newcommand*\climbheader[4]{%
-    \def\tempa{}%
+    %\def\tempa{}%
     \def\tempb{#1}%
     \ifx\tempa\tempb
     \else
