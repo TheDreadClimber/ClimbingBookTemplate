@@ -18,11 +18,11 @@
   \markboth{#1}{#1}
 }
 
-\newcommand*\crag[4]{%
+\newcommand*\crag[3]{%
 % A Crag can contain any mix of walls, boulder fields, or boulders.
 % name, description, header, content
     \section*{#1}
-    \addcontentsline{toc}{section}{#1}#2#3#4%
+    \addcontentsline{toc}{section}{#1}#2#3%
 }
 
 \newcommand*\boulderfield[4]{%
