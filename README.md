@@ -53,17 +53,15 @@ config.inc.           % Set values for the dynamic content in the template.
 
 - Write climbing route descriptions in `chapters.tex`.  
 - Use `Introduction.tex` for a preface or background story.  
-- Customize `frontmatter.tex` with a title page and table of contents.  
-- Add acknowledgments, references, or an index in `backmatter.tex`.  
+- Modify `config.tex`.  
 
 ---
 
 ## 🧗 Tips  
 
-- Use `\chapter{}` for new chapters.  
-- Use `\boulder{}` and `\cliff{}` to contain probelems and routes.  
-- Cross-reference routes, figures, and tables using `\label{}` and `
-ef{}`.  
+- Use `\climbingregion{}` for new chapters.
+- A `\boulderfield` and `\crag` will listed in the Table of Contents. They can contain routes or `\cliffs` and `\boulders`.
+- The `\boulder{}` and `\cliff{}` structures are meant to only contain problems and routes.  
 
 ---
 
