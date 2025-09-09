@@ -28,12 +28,12 @@
     \end{multicols}
 }
 
-\newcommand*\boulderfield[4]{%
+\newcommand*\boulderfield[3]{%
 % A boulder field contains boulders.
-% name, description, header, content
+% name, header, content
     \section*{#1}
-    \addcontentsline{toc}{section}{#1}#2#3
-    \paragraph{Boulders}#4%
+    \addcontentsline{toc}{section}{#1}#2
+    \paragraph{Boulders}#3%
 }
 
 \newcommand*\boulder[4]{
