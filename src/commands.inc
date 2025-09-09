@@ -1,4 +1,17 @@
 \edef\tempa{}%
+
+\newcommand\getsortletter[1]{
+  \StrLeft{#1}{4}[\firstfour]
+  \StrChar{#1}{5}[\charfive]
+  \StrChar{#1}{1}[\charone]%
+  \eef\the{The }
+  \ifx\firstfour\the
+    \charfive
+  \else
+    \charone
+  \fi
+}
+
 \newcommand\fullpageimage[1]{
   \edef\tempb{#1}%
   \ifx\tempa\tempb
