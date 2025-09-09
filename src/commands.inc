@@ -1,9 +1,10 @@
 \edef\tempa{}%
 
 \newcommand*\getsortletter[1]{%
-  \StrLeft{#1}{4}[\firstfour]%
-  \StrChar{#1}{5}[\charfive]%
-  \StrChar{#1}{1}[\charone]%
+  \def\param{#1}
+  \StrLeft{\param}{4}[\firstfour]%
+  \StrChar{\param}{5}[\charfive]%
+  \StrChar{\param}{1}[\charone]%
   \def\the{The }%
   \ifx\firstfour\the%
     \charfive
