@@ -31,14 +31,14 @@
 \newcommand*\boulderfield[3]{%
 % A boulder field contains boulders.
 % name, header, content
-    \section*{#1}
-    \addcontentsline{toc}{section}{#1}#2
+    \subsection*{#1}
+    \addcontentsline{toc}{subsection}{#1}#2
     \paragraph{Boulders}#3%
 }
 
 \newcommand*\boulder[4]{
-    \subsection*{#1}#2#3
-    \subsection*{Problems}
+    \subsubsection*{#1}#2#3
+    \subsubsection*{Problems}
     \begin{multicols}{2}%
         \resetcstep#4
     \end{multicols}
