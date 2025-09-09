@@ -37,11 +37,14 @@
     \paragraph{Boulders}#3%
 }
 
-\newcommand*\boulder[4]{
-    \subsubsection*{#1}#2#3
+\newcommand*\boulder[3]{
+% @param name - boulder name
+% @param header - boulder description
+% @param problems - list of problems
+    \subsubsection*{#1}#2
     \subsubsection*{Problems}
     \begin{multicols}{2}%
-        \resetcstep#4
+        \resetcstep#3
     \end{multicols}
 }
 
