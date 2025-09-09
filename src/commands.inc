@@ -5,7 +5,7 @@
   \StrChar{#1}{5}[\charfive]%
   \StrChar{#1}{1}[\charone]%
   \def\the{The }%
-  \ifx\firstfour\the
+  \ifx\firstfour\the%
     \charfive
   \else
     \charone
@@ -116,7 +116,7 @@
 \newcommand*\sportroute[6]{%
     \index[sportroutesbygrade]{#2!#1}%
     \StrChar{#1}{1}[\FirstChar]%
-    \index{\FirstChar!#1}%
+    \index{{\getsortletter{#1}}!#1}%
     {%
         \color{blue}%
         \cstep%
@@ -132,7 +132,7 @@
 \newcommand*\tradroute[5]{%
     \index[tradroutesbygrade]{#2!#1}%
     \StrChar{#1}{1}[\FirstChar]%
-    \index{\FirstChar!#1}%
+    \index{{\getsortletter{#1}}!#1}%
     {%
         \color{red}%
         \cstep%
@@ -148,7 +148,7 @@
 \newcommand*\mixedroute[6]{%
     \index[tradroutesbygrade]{#2!#1}%
     \StrChar{#1}{1}[\FirstChar]%
-    \index{\FirstChar!#1}%
+    \index{{\getsortletter{#1}}!#1}%
     {%
         \color{red}%
         \cstep%
@@ -208,7 +208,7 @@
     \edef\vsort{\vsortorder{#2}}% expand to plain text
     \index[boulderproblemsbygrade]{\vsort@#2!#1}% sort by \vsort, display #2
     \StrChar{#1}{1}[\FirstChar]%
-    \index{\FirstChar!#1}%
+    \index{{\getsortletter{#1}}!#1}%
     {%
       \color{ForestGreen}%
       \cstep
