@@ -41,15 +41,15 @@
     \end{multicols}
 }
 
-\newcommand*\cliff[4]{%
+\newcommand*\cliff[3]{%
 % A cliff primarily contains routes, but can have boulder problems. Ideally there would be sector separators for the taller sectors ans shorter.
 % name, description, header, content
     \subsection*{#1}
-    \addcontentsline{toc}{section}{#1}#2#3%
+    \addcontentsline{toc}{section}{#1}#2%
     \subsection*{Routes}
     \begin{multicols}{2}%
         \resetcstep
-        #4
+        #3
     \end{multicols}
 }
 
