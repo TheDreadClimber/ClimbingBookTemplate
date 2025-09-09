@@ -1,6 +1,6 @@
 \edef\tempa{}%
 
-\newcommand\getsortletter[1]{%
+\newcommand*\getsortletter[1]{%
   \StrLeft{#1}{4}[\firstfour]%
   \StrChar{#1}{5}[\charfive]%
   \StrChar{#1}{1}[\charone]%
@@ -115,7 +115,6 @@
 
 \newcommand*\sportroute[6]{%
     \index[sportroutesbygrade]{#2!#1}%
-    \StrChar{#1}{1}[\FirstChar]%
     \index{{\getsortletter{#1}}!#1}%
     {%
         \color{blue}%
@@ -131,7 +130,6 @@
 
 \newcommand*\tradroute[5]{%
     \index[tradroutesbygrade]{#2!#1}%
-    \StrChar{#1}{1}[\FirstChar]%
     \index{{\getsortletter{#1}}!#1}%
     {%
         \color{red}%
@@ -147,7 +145,6 @@
 
 \newcommand*\mixedroute[6]{%
     \index[tradroutesbygrade]{#2!#1}%
-    \StrChar{#1}{1}[\FirstChar]%
     \index{{\getsortletter{#1}}!#1}%
     {%
         \color{red}%
@@ -207,7 +204,6 @@
   \begingroup
     \edef\vsort{\vsortorder{#2}}% expand to plain text
     \index[boulderproblemsbygrade]{\vsort@#2!#1}% sort by \vsort, display #2
-    \StrChar{#1}{1}[\FirstChar]%
     \index{{\getsortletter{#1}}!#1}%
     {%
       \color{ForestGreen}%
