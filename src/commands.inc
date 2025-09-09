@@ -1,7 +1,7 @@
 \edef\tempa{}%
 
 \newcommand*\getsortletter[1]{%
-  \def\param{#1}
+  \edef\param{#1}%
   \StrLeft{\param}{4}[\firstfour]%
   \StrChar{\param}{5}[\charfive]%
   \StrChar{\param}{1}[\charone]%
