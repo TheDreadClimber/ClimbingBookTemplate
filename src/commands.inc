@@ -137,8 +137,9 @@
 
 \newcommand*\tradroute[5]{%
     \index[tradroutesbygrade]{#2!#1}%
-    \StrChar{\movename{#1}}{1}[\FirstChar]%
-    \index{\FirstChar!{\movename{#1}}}%
+    \def\movedname{\movename{#1}}
+    \StrChar{\movedname}{1}[\FirstChar]%
+    \index{\FirstChar!\movedname}%
     {%
         \color{red}%
         \cstep%
