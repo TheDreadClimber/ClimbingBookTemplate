@@ -1,5 +1,20 @@
 \edef\tempa{}%
 
+% Define a macro to move articles to the end
+\newcommand{\movename}[1]{%
+  \IfBeginWith{#1}{The }%
+    {\StrGobbleLeft{#1}{4}[\rest]\rest, The}%
+    {%
+      \IfBeginWith{#1}{A }%
+        {\StrGobbleLeft{#1}{2}[\rest]\rest, A}%
+        {%
+          \IfBeginWith{#1}{An }%
+            {\StrGobbleLeft{#1}{3}[\rest]\rest, An}%
+            {#1}%
+        }%
+    }%
+}
+
 \newcommand\fullpageimage[1]{
   \edef\tempb{#1}%
   \ifx\tempa\tempb
@@ -122,8 +137,8 @@
 
 \newcommand*\tradroute[5]{%
     \index[tradroutesbygrade]{#2!#1}%
-    \StrChar{#1}{1}[\FirstChar]%
-    \index{\FirstChar!#1}%
+    \StrChar{\movemame{#1}}{1}[\FirstChar]%
+    \index{\FirstChar!{\movename{#1}}%
     {%
         \color{red}%
         \cstep%
