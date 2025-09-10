@@ -3,13 +3,13 @@
 % Define a macro to move articles to the end
 \newcommand{\movename}[2]{%
   \IfBeginWith{#1}{The }%
-    {\StrGobbleLeft{#1}{4}[\rest]\rest, The}%
+    {\StrGobbleLeft{#1}{4}[\rest]\edef#2{\rest, The}}%
     {%
       \IfBeginWith{#1}{A }%
-        {\StrGobbleLeft{#1}{2}[\rest]\rest, A}%
+        {\StrGobbleLeft{#1}{2}[\rest]\edef#2{\rest, A}}%
         {%
           \IfBeginWith{#1}{An }%
-            {\StrGobbleLeft{#1}{3}[\rest]\rest, An}%
+            {\StrGobbleLeft{#1}{3}[\rest]\edef#2{\rest, An}}%
             {\edef#2{#1}}%
         }%
     }%
