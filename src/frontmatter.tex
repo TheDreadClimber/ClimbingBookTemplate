@@ -1,0 +1,42 @@
+\setcounter{page}{-1}
+
+\fullpageimage{\coverimage}
+
+\thispagestyle{empty}
+
+\frontmatter
+\makeatletter
+\begin{titlepage}
+    \thispagestyle{empty}
+    \begin{center}
+        \LARGE
+        \@title%
+        
+        \vspace*{1.5in}
+        \Large
+        {\bookedition} Edition
+        
+        \vspace*{1.5in}
+        \Large
+        \@author%
+        
+        \vspace*{\fill}
+        \includegraphics[width=2in]{\publisherlogo}
+    \end{center}
+    \newpage
+    \thispagestyle{empty}
+    \begin{center}
+        \vspace*{\fill}
+        Published By
+        
+        \publisher%
+        
+        Copyright \copyright\; \@date%
+
+    \end{center}
+\makeatother
+\end{titlepage}
+
+\thispagestyle{empty}
+\tableofcontents
+\thispagestyle{empty}

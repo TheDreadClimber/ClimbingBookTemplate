@@ -1,0 +1,43 @@
+\documentclass[12pt,twocolumn,a4paper]{book}
+
+\usepackage[english]{babel}
+\usepackage{booktabs}
+\usepackage{circledsteps}
+\usepackage[a4paper]{geometry}
+\usepackage{graphicx}
+\usepackage[xindy]{imakeidx}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{wrapfig}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{xstring}
+\usepackage{etoolbox}
+
+% Remove paragraph indentations.
+\setlength\parindent{0pt}
+
+\input{config.inc}
+\input{indices.inc}
+\input{commands.inc}
+
+% Set the TOC's name to "Table of Contents" instead of "Contents"
+\setlocalecaption{english}{contents}{Table of Contents}
+
+% change the 50pt vertical skip to 0pt.
+\makeatletter
+\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{\vspace*{0\p@}}{}{}
+\makeatother
+
+\begin{document}
+\include{frontmatter}
+\mainmatter%
+% Disable page number on TOC
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\include{Introduction}
+
+% Add region chapters here.
+\include{chapters}
+
+\backmatter%
+\include{backmatter}
+\end{document}
