@@ -232,7 +232,7 @@
   \endgroup
 }
 
-makeatletter
+\makeatletter
 % Lookup macro: expands to the numeric key
 \newcommand*\ydssortorder[1]{\@nameuse{ydssort@#1}}
 
