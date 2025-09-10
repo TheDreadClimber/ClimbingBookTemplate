@@ -137,7 +137,7 @@
 
 \newcommand*\tradroute[5]{%
     \index[tradroutesbygrade]{#2!#1}%
-    \def\movedname{\movename{#1}}
+    \edef\movedname{\movename{#1}}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
     {%
