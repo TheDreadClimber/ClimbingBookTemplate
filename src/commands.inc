@@ -121,8 +121,9 @@
 
 \newcommand*\sportroute[6]{%
     \index[sportroutesbygrade]{#2!#1}%
-    \StrChar{#1}{1}[\FirstChar]%
-    \index{\FirstChar!#1}%
+    \movename{#1}{\movedname}
+    \StrChar{\movedname}{1}[\FirstChar]%
+    \index{\FirstChar!\movedname}%
     {%
         \color{blue}%
         \cstep%
@@ -154,8 +155,9 @@
 
 \newcommand*\mixedroute[6]{%
     \index[tradroutesbygrade]{#2!#1}%
-    \StrChar{#1}{1}[\FirstChar]%
-    \index{\FirstChar!#1}%
+    \movename{#1}{\movedname}
+    \StrChar{\movedname}{1}[\FirstChar]%
+    \index{\FirstChar!\movedname}%
     {%
         \color{red}%
         \cstep%
@@ -214,8 +216,9 @@
   \begingroup
     \edef\vsort{\vsortorder{#2}}% expand to plain text
     \index[boulderproblemsbygrade]{\vsort@#2!#1}% sort by \vsort, display #2
-    \StrChar{#1}{1}[\FirstChar]%
-    \index{\FirstChar!#1}%
+    \movename{#1}{\movedname}
+    \StrChar{\movedname}{1}[\FirstChar]%
+    \index{\FirstChar!\movedname}%
     {%
       \color{ForestGreen}%
       \cstep
