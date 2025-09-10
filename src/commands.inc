@@ -1,7 +1,7 @@
 \edef\tempa{}%
 
 % Define a macro to move articles to the end
-\newcommand{\movename}[1]{%
+\newcommand{\movename}[2]{%
   \IfBeginWith{#1}{The }%
     {\StrGobbleLeft{#1}{4}[\rest]\rest, The}%
     {%
@@ -10,7 +10,7 @@
         {%
           \IfBeginWith{#1}{An }%
             {\StrGobbleLeft{#1}{3}[\rest]\rest, An}%
-            {#1}%
+            {\edef#2{#1}}%
         }%
     }%
 }
@@ -137,7 +137,7 @@
 
 \newcommand*\tradroute[5]{%
     \index[tradroutesbygrade]{#2!#1}%
-    \edef\movedname{\movename{#1}}
+    \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
     {%
