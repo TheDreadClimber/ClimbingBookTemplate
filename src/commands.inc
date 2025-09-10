@@ -120,7 +120,8 @@
 }
 
 \newcommand*\sportroute[6]{%
-    \index[sportroutesbygrade]{#2!#1}%
+    \edef\ydssort{\ydssortorder{#2}}% expand to plain text
+    \index[sportroutesbygrade]{\ydssort!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
@@ -137,7 +138,8 @@
 }
 
 \newcommand*\tradroute[5]{%
-    \index[tradroutesbygrade]{#2!#1}%
+    \edef\ydssort{\ydssortorder{#2}}% expand to plain text
+    \index[tradroutesbygrade]{\ydssort!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
@@ -154,7 +156,8 @@
 }
 
 \newcommand*\mixedroute[6]{%
-    \index[tradroutesbygrade]{#2!#1}%
+    \edef\ydssort{\ydssortorder{#2}}% expand to plain text
+    \index[tradroutesbygrade]{\ydssort!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
@@ -228,3 +231,47 @@
     #3\\\textit{FA: #4}\par\bigskip
   \endgroup
 }
+
+makeatletter
+% Lookup macro: expands to the numeric key
+\newcommand*\ydssortorder[1]{\@nameuse{ydssort@#1}}
+
+% === Grade table ===
+\expandafter\def\csname ydssort@4th\endcsname{000}
+\expandafter\def\csname ydssort@5.0\endcsname{005}
+\expandafter\def\csname ydssort@5.1\endcsname{010}
+\expandafter\def\csname ydssort@5.2\endcsname{015}
+\expandafter\def\csname ydssort@5.3\endcsname{020}
+\expandafter\def\csname ydssort@5.4\endcsname{025}
+\expandafter\def\csname ydssort@5.5\endcsname{030}
+\expandafter\def\csname ydssort@5.6\endcsname{035}
+\expandafter\def\csname ydssort@5.7\endcsname{040}
+\expandafter\def\csname ydssort@5.8\endcsname{045}
+\expandafter\def\csname ydssort@5.9\endcsname{050}
+\expandafter\def\csname ydssort@5.9+\endcsname{051}
+\expandafter\def\csname ydssort@5.10-\endcsname{053}
+\expandafter\def\csname ydssort@5.10\endcsname{054}
+\expandafter\def\csname ydssort@5.10a\endcsname{055}
+\expandafter\def\csname ydssort@5.10a/b\endcsname{058}
+\expandafter\def\csname ydssort@5.10b\endcsname{060}
+\expandafter\def\csname ydssort@5.10c\endcsname{065}
+\expandafter\def\csname ydssort@5.10d\endcsname{070}
+\expandafter\def\csname ydssort@5.11-\endcsname{073}
+\expandafter\def\csname ydssort@5.11a\endcsname{075}
+\expandafter\def\csname ydssort@5.11b\endcsname{080}
+\expandafter\def\csname ydssort@5.11c\endcsname{085}
+\expandafter\def\csname ydssort@5.11d\endcsname{090}
+\expandafter\def\csname ydssort@5.12a\endcsname{095}
+\expandafter\def\csname ydssort@5.12b\endcsname{100}
+\expandafter\def\csname ydssort@5.12c\endcsname{105}
+\expandafter\def\csname ydssort@5.12d\endcsname{110}
+\expandafter\def\csname ydssort@5.13a\endcsname{120}
+\expandafter\def\csname ydssort@5.13b\endcsname{125}
+\expandafter\def\csname ydssort@5.13c\endcsname{130}
+\expandafter\def\csname ydssort@5.13d\endcsname{135}
+\expandafter\def\csname ydssort@5.14a\endcsname{140}
+\expandafter\def\csname ydssort@5.14b\endcsname{145}
+\expandafter\def\csname ydssort@Project\endcsname{150}
+% === Fallback if grade is unknown ===
+\expandafter\def\csname ydssort@\endcsname{999}
+\makeatother
