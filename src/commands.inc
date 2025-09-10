@@ -1,5 +1,20 @@
 \edef\tempa{}%
 
+% Define a macro to move articles to the end
+\newcommand{\movename}[2]{%
+  \IfBeginWith{#1}{The }%
+    {\StrGobbleLeft{#1}{4}[\rest]\edef#2{\rest, The}}%
+    {%
+      \IfBeginWith{#1}{A }%
+        {\StrGobbleLeft{#1}{2}[\rest]\edef#2{\rest, A}}%
+        {%
+          \IfBeginWith{#1}{An }%
+            {\StrGobbleLeft{#1}{3}[\rest]\edef#2{\rest, An}}%
+            {\edef#2{#1}}%
+        }%
+    }%
+}
+
 \newcommand\fullpageimage[1]{
   \edef\tempb{#1}%
   \ifx\tempa\tempb
@@ -106,8 +121,9 @@
 
 \newcommand*\sportroute[6]{%
     \index[sportroutesbygrade]{#2!#1}%
-    \StrChar{#1}{1}[\FirstChar]%
-    \index{\FirstChar!#1}%
+    \movename{#1}{\movedname}
+    \StrChar{\movedname}{1}[\FirstChar]%
+    \index{\FirstChar!\movedname}%
     {%
         \color{blue}%
         \cstep%
@@ -122,8 +138,9 @@
 
 \newcommand*\tradroute[5]{%
     \index[tradroutesbygrade]{#2!#1}%
-    \StrChar{#1}{1}[\FirstChar]%
-    \index{\FirstChar!#1}%
+    \movename{#1}{\movedname}
+    \StrChar{\movedname}{1}[\FirstChar]%
+    \index{\FirstChar!\movedname}%
     {%
         \color{red}%
         \cstep%
@@ -138,8 +155,9 @@
 
 \newcommand*\mixedroute[6]{%
     \index[tradroutesbygrade]{#2!#1}%
-    \StrChar{#1}{1}[\FirstChar]%
-    \index{\FirstChar!#1}%
+    \movename{#1}{\movedname}
+    \StrChar{\movedname}{1}[\FirstChar]%
+    \index{\FirstChar!\movedname}%
     {%
         \color{red}%
         \cstep%
@@ -198,8 +216,9 @@
   \begingroup
     \edef\vsort{\vsortorder{#2}}% expand to plain text
     \index[boulderproblemsbygrade]{\vsort@#2!#1}% sort by \vsort, display #2
-    \StrChar{#1}{1}[\FirstChar]%
-    \index{\FirstChar!#1}%
+    \movename{#1}{\movedname}
+    \StrChar{\movedname}{1}[\FirstChar]%
+    \index{\FirstChar!\movedname}%
     {%
       \color{ForestGreen}%
       \cstep
