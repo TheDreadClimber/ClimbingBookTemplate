@@ -121,7 +121,7 @@
 
 \newcommand*\sportroute[6]{%
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
-    \index[sportroutesbygrade]{\ydssort!#1}%
+    \index[sportroutesbygrade]{\ydssort@#2!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
@@ -139,7 +139,7 @@
 
 \newcommand*\tradroute[5]{%
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
-    \index[tradroutesbygrade]{\ydssort!#1}%
+    \index[tradroutesbygrade]{\ydssort@#2!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
@@ -157,7 +157,7 @@
 
 \newcommand*\mixedroute[6]{%
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
-    \index[tradroutesbygrade]{\ydssort!#1}%
+    \index[tradroutesbygrade]{\ydssort@#2!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
