@@ -120,6 +120,7 @@
 }
 
 \newcommand*\sportroute[6]{%
+  \begingroup
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
     \index[sportroutesbygrade]{\ydssort@#2!#1}%
     \movename{#1}{\movedname}
@@ -134,7 +135,8 @@
         \fontfamily{phv}%
         \selectfont #2%
     }%
-    \\#3\\#4' #5 Bolts \textit{FA: #6}\bigskip\\%
+    \\#3\\#4' #5 Bolts \textit{FA: #6}\par\bigskip
+  \endgroup
 }
 
 \newcommand*\tradroute[5]{%
@@ -153,11 +155,12 @@
         \fontfamily{phv}%
         \selectfont #2%
     }%
-    \\#3 #4' \textit{FA: #5}\bigskip
+    \\#3 #4' \textit{FA: #5}\par\bigskip
   \endgroup
 }
 
 \newcommand*\mixedroute[6]{%
+  \begingroup
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
     \index[tradroutesbygrade]{\ydssort@#2!#1}%
     \movename{#1}{\movedname}
@@ -172,7 +175,8 @@
         \fontfamily{phv}%
         \selectfont #2%
     }%
-    \\#3\\#4' #5 Bolts \textit{FA: #6}\bigskip\\%
+    \\#3\\#4' #5 Bolts \textit{FA: #6}\par\bigskip
+  \endgroup
 }
 
 \makeatletter
