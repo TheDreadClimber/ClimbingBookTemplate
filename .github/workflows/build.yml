@@ -12,19 +12,19 @@ jobs:
           lint-all: true
       - name: fetch template
         run: |
-          wget https://github.com/TheDreadClimber/ClimbingBookTemplate/archive/refs/heads/import.zip
-          unzip import.zip
+          wget https://github.com/TheDreadClimber/ClimbingBookTemplate/archive/refs/heads/main.zip
+          unzip main.zip
       - name: prepare template
         run: |
-          rm ClimbingBookTemplate-import/chapters.tex
-          rm ClimbingBookTemplate-import/config.inc
-          cp src/* ClimbingBookTemplate-import/
+          rm ClimbingBookTemplate-main/chapters.tex
+          rm ClimbingBookTemplate-main/config.inc
+          cp -r src/* ClimbingBookTemplate-main/
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: ClimbingBookTemplate-import/src/main.tex
+          root_file: ClimbingBookTemplate-main/src/main.tex
         env:
-          TEXINPUTS: ".:./ClimbingBookTemplate-import//:"
+          TEXINPUTS: ".:./ClimbingBookTemplate-main//:"
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
         with:
