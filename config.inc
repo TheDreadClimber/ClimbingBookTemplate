@@ -1,3 +1,5 @@
+\usepackage{lipsum}
+
 \title{Book Title}
 \author{Author}
 \date{\today}
