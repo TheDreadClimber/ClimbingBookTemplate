@@ -256,6 +256,7 @@
 \expandafter\def\csname ydssort@5.7+\endcsname{042}
 \expandafter\def\csname ydssort@5.8-\endcsname{044}
 \expandafter\def\csname ydssort@5.8\endcsname{045}
+\expandafter\def\csname ydssort@5.8+\endcsname{046}
 \expandafter\def\csname ydssort@5.9\endcsname{050}
 \expandafter\def\csname ydssort@5.9+\endcsname{051}
 \expandafter\def\csname ydssort@5.10-\endcsname{053}
