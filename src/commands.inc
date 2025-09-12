@@ -155,7 +155,7 @@
         \fontfamily{phv}%
         \selectfont #2%
     }%
-    \\#3 #4' \textit{FA: #5}\par\bigskip
+    \\#3\\#4' \textit{FA: #5}\par\bigskip
   \endgroup
 }
 
