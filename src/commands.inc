@@ -212,6 +212,21 @@
   \endgroup
 }
 
+\newcommand*\iceroute[4]{%
+  \begingroup
+    %\index[boulderproblemsbygrade]{\vsort @#2!#1}% sort by \vsort, display #2
+    \movename{#1}{\movedname}
+    \StrChar{\movedname}{1}[\FirstChar]%
+    \index{\FirstChar!\movedname}%
+    {%
+      \color{cyan}%
+      \cstep
+    } %
+    \textbf{#1} {\fontfamily{phv}\selectfont #2}\\%
+    #3\\\textit{FA: #4}\par\bigskip
+  \endgroup
+}
+
 \makeatletter
 % Lookup macro: expands to the numeric key
 \newcommand*\vsortorder[1]{\@nameuse{vsort@#1}}
