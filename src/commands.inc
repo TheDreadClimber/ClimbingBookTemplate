@@ -130,8 +130,7 @@
         \color{blue}%
         \cstep%
     } %
-    \textbf{#1} %
-    {%
+    \textbf{#1} {%
         \fontfamily{phv}%
         \selectfont #2%
     }%
@@ -150,8 +149,7 @@
         \color{red}%
         \cstep%
     } %
-    \textbf{#1} %
-    {%
+    \textbf{#1} {%
         \fontfamily{phv}%
         \selectfont #2%
     }%
@@ -170,7 +168,7 @@
         \color{purple}%
         \cstep%
     } %
-    \textbf{#1}{%
+    \textbf{#1} {%
         \fontfamily{phv}%
         \selectfont #2%
     }%
@@ -188,7 +186,7 @@
         \color{red}%
         \cstep%
     } %
-    \textbf{#1}{%
+    \textbf{#1} {%
         \fontfamily{phv}%
         \selectfont #2%
     }%
