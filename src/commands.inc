@@ -229,7 +229,7 @@
 \newcommand*\boulderproblem[4]{%
   \begingroup
     \edef\vsort{\vsortorder{#2}}% expand to plain text
-    \index[boulderproblemsbygrade]{\vsort@#2!#1}% sort by \vsort, display #2
+    \index[boulderproblemsbygrade]{\vsort @#2!#1}% sort by \vsort, display #2
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
