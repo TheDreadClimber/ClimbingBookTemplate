@@ -159,7 +159,7 @@
   \endgroup
 }
 
-\newcommand*\toproperoute[6]{%
+\newcommand*\toproperoute[5]{%
 % what index should these appear in?
   \begingroup
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
@@ -174,7 +174,7 @@
         \fontfamily{phv}%
         \selectfont #2%
     }%
-    \\#3\\#4' #5 Bolts \textit{FA: #6}\par\bigskip
+    \\#3\\#4' \textit{FA: #6}\par\bigskip
   \endgroup
 }
 
