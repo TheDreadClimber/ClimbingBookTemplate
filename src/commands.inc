@@ -184,8 +184,12 @@
 \newcommand*\vsortorder[1]{\@nameuse{vsort@#1}}
 
 % === Grade table ===
-\expandafter\def\csname vsort@V0\endcsname{000}
-\expandafter\def\csname vsort@V0/1\endcsname{005}
+\expandafter\def\csname vsort@VB-\endcsname{000}
+\expandafter\def\csname vsort@VB\endcsname{001}
+\expandafter\def\csname vsort@VB+\endcsname{002}
+\expandafter\def\csname vsort@V0-\endcsname{003}
+\expandafter\def\csname vsort@V0\endcsname{005}
+\expandafter\def\csname vsort@V0+\endcsname{006}
 \expandafter\def\csname vsort@V1\endcsname{010}
 \expandafter\def\csname vsort@V1/2\endcsname{015}
 \expandafter\def\csname vsort@V2\endcsname{020}
