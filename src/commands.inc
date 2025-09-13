@@ -120,6 +120,12 @@
 }
 
 \newcommand*\sportroute[6]{%
+% {@param} #1 Name
+% {@param} #2 Grade
+% {@param} #3 Description
+% {@param} #4 Height
+% {@param} #5 Bolts
+% {@param} #6 FA
   \begingroup
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
     \index[sportroutesbygrade]{\ydssort@#2!#1}%
@@ -139,6 +145,11 @@
 }
 
 \newcommand*\tradroute[5]{%
+% {@param} #1 Name
+% {@param} #2 Grade
+% {@param} #3 Description
+% {@param} #4 Height
+% {@param} #6 FA
   \begingroup
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
     \index[tradroutesbygrade]{\ydssort@#2!#1}%
@@ -158,10 +169,14 @@
 }
 
 \newcommand*\toproperoute[5]{%
-% what index should these appear in?
+% {@param} #1 Name
+% {@param} #2 Grade
+% {@param} #3 Description
+% {@param} #4 Height
+% {@param} #5 FA
   \begingroup
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
-    \index[tradroutesbygrade]{\ydssort@#2!#1}%
+    \index[sportroutesbygrade]{\ydssort@#2!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}{%
@@ -176,10 +191,15 @@
   \endgroup
 }
 
-\newcommand*\mixedroute[6]{%
+\newcommand*\mixedroute[5]{%
+% Mixed Ice Climb
+% {@param} #1 Name
+% {@param} #2 Grade
+% {@param} #3 Description
+% {@param} #4 Height
+% {@param} #6 FA
   \begingroup
-    \edef\ydssort{\ydssortorder{#2}}% expand to plain text
-    \index[tradroutesbygrade]{\ydssort@#2!#1}%
+    \index[iceroutesbygrade]{#2!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}{%
@@ -190,11 +210,17 @@
         \fontfamily{phv}%
         \selectfont #2%
     }%
-    \\#3\\#4' #5 Bolts \textit{FA: #6}\par\bigskip
+    \\#3\\#4' \textit{FA: #5}\par\bigskip
   \endgroup
 }
 
 \newcommand*\mixedtradroute[6]{%
+% {@param} #1 Name
+% {@param} #2 Grade
+% {@param} #3 Description
+% {@param} #4 Height
+% {@param} #5 Bolts
+% {@param} #6 FA
   \begingroup
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
     \index[tradroutesbygrade]{\ydssort@#2!#1}%
@@ -212,7 +238,12 @@
   \endgroup
 }
 
-\newcommand*\iceroute[4]{%
+\newcommand*\iceroute[5]{%
+% {@param} #1 Name
+% {@param} #2 Grade
+% {@param} #3 Description
+% {@param} #4 Height
+% {@param} #5 FA
   \begingroup
     %\index[boulderproblemsbygrade]{\vsort @#2!#1}% sort by \vsort, display #2
     \movename{#1}{\movedname}
@@ -223,7 +254,7 @@
       \cstep
     } %
     \textbf{#1} {\fontfamily{phv}\selectfont #2}\\%
-    #3\\\textit{FA: #4}\par\bigskip
+    #3\\#4' \textit{FA: #5}\par\bigskip
   \endgroup
 }
 
