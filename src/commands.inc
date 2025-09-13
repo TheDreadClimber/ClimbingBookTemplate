@@ -204,7 +204,7 @@
         \color{red}%
         \cstep%
     } %
-    \textbf{#1}{%
+    \textbf{#1} {%
         \fontfamily{phv}%
         \selectfont #2%
     }%
