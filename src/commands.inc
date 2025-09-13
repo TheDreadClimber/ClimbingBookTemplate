@@ -159,19 +159,54 @@
   \endgroup
 }
 
+\newcommand*\toproperoute[6]{%
+% what index should these appear in?
+  \begingroup
+    \edef\ydssort{\ydssortorder{#2}}% expand to plain text
+    \index[tradroutesbygrade]{\ydssort@#2!#1}%
+    \movename{#1}{\movedname}
+    \StrChar{\movedname}{1}[\FirstChar]%
+    \index{\FirstChar!\movedname}{%
+        \color{purple}%
+        \cstep%
+    } %
+    \textbf{#1}{%
+        \fontfamily{phv}%
+        \selectfont #2%
+    }%
+    \\#3\\#4' #5 Bolts \textit{FA: #6}\par\bigskip
+  \endgroup
+}
+
 \newcommand*\mixedroute[6]{%
   \begingroup
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
     \index[tradroutesbygrade]{\ydssort@#2!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
-    \index{\FirstChar!\movedname}%
-    {%
+    \index{\FirstChar!\movedname}{%
         \color{red}%
         \cstep%
     } %
-    \textbf{#1} %
-    {%
+    \textbf{#1}{%
+        \fontfamily{phv}%
+        \selectfont #2%
+    }%
+    \\#3\\#4' #5 Bolts \textit{FA: #6}\par\bigskip
+  \endgroup
+}
+
+\newcommand*\mixedtradroute[6]{%
+  \begingroup
+    \edef\ydssort{\ydssortorder{#2}}% expand to plain text
+    \index[tradroutesbygrade]{\ydssort@#2!#1}%
+    \movename{#1}{\movedname}
+    \StrChar{\movedname}{1}[\FirstChar]%
+    \index{\FirstChar!\movedname}{%
+        \color{red}%
+        \cstep%
+    } %
+    \textbf{#1}{%
         \fontfamily{phv}%
         \selectfont #2%
     }%
