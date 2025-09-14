@@ -133,9 +133,9 @@
     \index[sportroutesbygrade]{\ydssort @#2!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
-    \index{\FirstChar!\movedname}%
-    {%
-        \color{blue}%
+    \index{\FirstChar!\movedname}{%
+        %\color{blue}%
+        \pgfkeys{/csteps/fill color=blue}%
         \cstep%
     } %
     \textbf{#1} {%
