@@ -180,7 +180,7 @@
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}{%
-        \pgfkeys{/csteps/fill color=purple}%
+        \pgfkeys{/csteps/fill color=Plum}%
         \cstep%
     } %
     \textbf{#1} {%
