@@ -113,6 +113,8 @@
 % Add a little more space around the numbers in the \Circled
 \pgfkeys{/csteps/inner ysep=5pt}
 \pgfkeys{/csteps/inner xsep=5pt}
+\pgfkeys{/csteps/inner color=white}
+\pgfkeys{/csteps/fill}
 
 \renewcommand{\cstep}{%
     \refstepcounter{cstepcnt}%
