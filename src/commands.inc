@@ -245,7 +245,7 @@
 % {@param} #4 Height
 % {@param} #5 FA
   \begingroup
-    \index[iceroutesbygrade]{\#2!#1}% sort by \vsort, display #2
+    \index[iceroutesbygrade]{#2!#1}% sort by \vsort, display #2
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
