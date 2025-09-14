@@ -128,7 +128,7 @@
 % {@param} #6 FA
   \begingroup
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
-    \index[sportroutesbygrade]{\ydssort@#2!#1}%
+    \index[sportroutesbygrade]{\ydssort @#2!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
@@ -152,7 +152,7 @@
 % {@param} #6 FA
   \begingroup
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
-    \index[tradroutesbygrade]{\ydssort@#2!#1}%
+    \index[tradroutesbygrade]{\ydssort @#2!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
@@ -176,7 +176,7 @@
 % {@param} #5 FA
   \begingroup
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
-    \index[sportroutesbygrade]{\ydssort@#2!#1}%
+    \index[sportroutesbygrade]{\ydssort @#2!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}{%
@@ -223,7 +223,7 @@
 % {@param} #6 FA
   \begingroup
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
-    \index[tradroutesbygrade]{\ydssort@#2!#1}%
+    \index[tradroutesbygrade]{\ydssort @#2!#1}%
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}{%
