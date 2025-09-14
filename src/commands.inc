@@ -133,7 +133,6 @@
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}{%
-        %\color{blue}%
         \pgfkeys{/csteps/fill color=blue}%
         \cstep%
     } %
@@ -158,7 +157,7 @@
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
     {%
-        \color{red}%
+        \pgfkeys{/csteps/fill color=red}%
         \cstep%
     } %
     \textbf{#1} {%
@@ -181,7 +180,7 @@
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}{%
-        \color{purple}%
+        \pgfkeys{/csteps/fill color=purple}%
         \cstep%
     } %
     \textbf{#1} {%
@@ -204,7 +203,7 @@
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}{%
-        \color{red}%
+        \pgfkeys{/csteps/fill color=red}%
         \cstep%
     } %
     \textbf{#1} {%
@@ -228,7 +227,7 @@
     \movename{#1}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}{%
-        \color{red}%
+        \pgfkeys{/csteps/fill color=red}%
         \cstep%
     } %
     \textbf{#1} {%
@@ -251,7 +250,7 @@
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
     {%
-      \color{cyan}%
+      \pgfkeys{/csteps/fill color=cyan}%
       \cstep
     } %
     \textbf{#1} {\fontfamily{phv}\selectfont #2}\\%
@@ -314,7 +313,7 @@
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
     {%
-      \color{ForestGreen}%
+      \pgfkeys{/csteps/fill color=ForestGreen}%
       \cstep
     } %
     \textbf{#1} {\fontfamily{phv}\selectfont #2}\\%
