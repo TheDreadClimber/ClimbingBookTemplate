@@ -140,7 +140,7 @@
         \fontfamily{phv}%
         \selectfont #2%
     }%
-    \\#3\\#4' #5 Bolts \textit{FA: #6}\par\bigskip
+    \\#3\\#4\heightunit #5 Bolts \textit{FA: #6}\par\bigskip
   \endgroup
 }
 
@@ -164,7 +164,7 @@
         \fontfamily{phv}%
         \selectfont #2%
     }%
-    \\#3\\#4' \textit{FA: #5}\par\bigskip
+    \\#3\\#4\heightunit \textit{FA: #5}\par\bigskip
   \endgroup
 }
 
@@ -187,7 +187,7 @@
         \fontfamily{phv}%
         \selectfont #2%
     }%
-    \\#3\\#4' \textit{FA: #5}\par\bigskip
+    \\#3\\#4\heightunit \textit{FA: #5}\par\bigskip
   \endgroup
 }
 
@@ -210,7 +210,7 @@
         \fontfamily{phv}%
         \selectfont #2%
     }%
-    \\#3\\#4' \textit{FA: #5}\par\bigskip
+    \\#3\\#4\heightunit \textit{FA: #5}\par\bigskip
   \endgroup
 }
 
@@ -234,7 +234,7 @@
         \fontfamily{phv}%
         \selectfont #2%
     }%
-    \\#3\\#4' #5 Bolts \textit{FA: #6}\par\bigskip
+    \\#3\\#4\heightunit #5 Bolts \textit{FA: #6}\par\bigskip
   \endgroup
 }
 
@@ -254,7 +254,7 @@
       \cstep
     } %
     \textbf{#1} {\fontfamily{phv}\selectfont #2}\\%
-    #3\\#4' \textit{FA: #5}\par\bigskip
+    #3\\#4\heightunit \textit{FA: #5}\par\bigskip
   \endgroup
 }
 
