@@ -311,7 +311,13 @@
 \expandafter\def\csname vsort@\endcsname{999}
 \makeatother
 
-\newcommand*\boulderproblem[4]{%
+\newcommand*\boulderproblem[5]{%
+% Boulder Problem
+% {@param} #1 Name
+% {@param} #2 Grade
+% {@param} #3 Description
+% {@param} #4 Height
+% {@param} #5 FA
   \begingroup
     \edef\vsort{\vsortorder{#2}}% expand to plain text
     \index[boulderproblemsbygrade]{\vsort @#2!#1}% sort by \vsort, display #2
@@ -323,7 +329,7 @@
       \cstep%
     } %
     \textbf{#1} {\fontfamily{phv}\selectfont #2}\\%
-    #3\\\textit{FA:\ #4}\par\bigskip
+    #3\\\climbheight{#4}\textit{FA:\ #5}\par\bigskip
   \endgroup
 }
 
