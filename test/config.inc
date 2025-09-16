@@ -8,3 +8,4 @@
 \def\bookedition{First}
 \def\coverimage{}
 \def\backcoverimage{}
+\def\heightunit{'}
