@@ -41,13 +41,13 @@
   \markboth{#1}{#1}
 }
 
-\newcommand\leveltype[1]{%
+\newcommand\leveltype[2]{%
     \edef\tempb{#1}%
-    \ifstrequal{tempb}{1}{section}{%
-      \ifstrequal{\tempb}{2}{subsection}{%
-        \ifstrequal{\tempb}{3}{subsubsection}{%
-          \ifstrequal{\tempb}{4}{subsubsubsection}
-            {subsubsubsubsection}}}}
+    \ifstrequal{tempb}{1}{\addcontentsline{toc}{section}{#2}}{%
+      \ifstrequal{\tempb}{2}{\addcontentsline{toc}{subsection}{#2}}{%
+        \ifstrequal{\tempb}{3}{\addcontentsline{toc}{subsubsection}{#2}}{%
+          \ifstrequal{\tempb}{4}{\addcontentsline{toc}{subsubsubsection}{#2}}
+            {\addcontentsline{toc}{subsubsubsubsection}{#2}}}}}
 }
 
 \newcommand*\climbingarea[3]{%
@@ -57,10 +57,9 @@
 % multicol content
     \addtocounter{nestedlevel}{1}
     \section*{#1}
-    \edef\levelname{%
+    \levelname{%
         \leveltype{\thenestedlevel}%
-      }
-    \addcontentsline{toc}{section}{#1}#2
+      }{#1}#2
     \begin{multicols}{2}%
         \resetcstep#3
     \end{multicols}
