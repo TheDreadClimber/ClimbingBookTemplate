@@ -57,8 +57,10 @@
 % multicol content
     \addtocounter{nestedlevel}{1}
     \section*{#1}
-    \edef\levelname{\leveltype{\thenestedlevel}}
-    \addcontentsline{toc}{\levelname}{#1}#2
+    \edef\levelname{%
+        \leveltype{\thenestedlevel}%
+      }
+    \addcontentsline{toc}{section}{#1}#2
     \begin{multicols}{2}%
         \resetcstep#3
     \end{multicols}
