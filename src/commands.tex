@@ -48,7 +48,8 @@
 % multicol content
     \addtocounter{nestedlevel}{1}
     \section*{#1}
-    \ifstrequal{\thenestedlevel}{1}{\addcontentsline{toc}{section}{#1}}{%
+    \edef\onename{1}
+    \ifstrequal{\thenestedlevel}{\onename}{\addcontentsline{toc}{section}{#1}}{%
       \ifstrequal{\thenestedlevel}{2}{\addcontentsline{toc}{subsection}{#1}}{%
         \ifstrequal{\thenestedlevel}{3}{\addcontentsline{toc}{subsubsection}{#1}}{%
           \ifstrequal{\thenestedlevel}{4}{\addcontentsline{toc}{paragraph}{#1}}
