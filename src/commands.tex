@@ -42,27 +42,26 @@
 }
 
 \newcommand*\climbingarea[3]{%
-% A Crag, cliff, sector, etc
-% name
-% header
-% multicol content
-    \addtocounter{nestedlevel}{1}
-    \edef\onename{1}
-    \ifstrequal{\thenestedlevel}{\onename}{%
-        \section*{#1}
-        \addcontentsline{toc}{section}{#1}}{%
-      \ifstrequal{\thenestedlevel}{2}{%
-          \subsection*{#1}
-          \addcontentsline{toc}{subsection}{#1}}{%
-        \ifstrequal{\thenestedlevel}{3}{\addcontentsline{toc}{subsubsection}{#1}}{%
-          \ifstrequal{\thenestedlevel}{4}{\addcontentsline{toc}{paragraph}{#1}}
-            {\addcontentsline{toc}{subparagraph}{#1}}}}}%
-    Nested Level:\ \thenestedlevel\\
-    #2
-    \begin{multicols}{2}%
+  \addtocounter{nestedlevel}{1}%
+  \section*{#1}%
+  \begingroup
+    \ifnum\value{nestedlevel}=1
+      \addcontentsline{toc}{section}{#1}%
+    \else\ifnum\value{nestedlevel}=2
+      \addcontentsline{toc}{subsection}{#1}%
+    \else\ifnum\value{nestedlevel}=3
+      \addcontentsline{toc}{subsubsection}{#1}%
+    \else\ifnum\value{nestedlevel}=4
+      \addcontentsline{toc}{paragraph}{#1}%
+    \else
+      \addcontentsline{toc}{subparagraph}{#1}%
+    \fi\fi\fi\fi
+  \endgroup
+  #2
+  \begin{multicols}{2}%
         \resetcstep#3
-    \end{multicols}
-    \addtocounter{nestedlevel}{-1}
+  \end{multicols}
+  \addtocounter{nestedlevel}{-1}%
 }
 
 \newcommand*\climbheader[4]{%
