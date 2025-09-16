@@ -15,6 +15,13 @@
     }%
 }
 
+\newcommanf\clibheight[1]{
+    \edef\tempb{#1}%
+    \ifx\tempa\tempb
+    \else
+        #4\heightunit
+    \fi
+}
 \newcommand\fullpageimage[1]{
   \edef\tempb{#1}%
   \ifx\tempa\tempb
@@ -140,7 +147,7 @@
         \fontfamily{phv}%
         \selectfont #2%
     }%
-    \\#3\\#4\heightunit #5 Bolts \textit{FA: #6}\par\bigskip
+    \\#3\\\climbheight{#4} #5 Bolts \textit{FA: #6}\par\bigskip
   \endgroup
 }
 
