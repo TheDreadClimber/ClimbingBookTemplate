@@ -15,7 +15,7 @@
     }%
 }
 
-\newcommanf\clibheight[1]{
+\newcommand\climbheight[1]{
     \edef\tempb{#1}%
     \ifx\tempa\tempb
     \else
