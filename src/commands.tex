@@ -43,18 +43,11 @@
 
 \newcommand\leveltype[1]{%
     \edef\tempb{#1}%
-    \ifx\tempb{1}
-        section
-    \else\ifx\tempb{2}
-            subsection
-        \else\ifx\tempb{3}
-                subsubsection
-            \else\ifx\tempb{4}
-                    subsubsubsection
-                \fi
-            \fi
-        \fi
-    \fi
+    \ifstrequal{tempb}{1}{section}{%
+      \ifstrequal{\tempb}{2}{subsection}{%
+        \ifstrequal{\tempb}{3}{subsubsection}{%
+          \ifstrequal{\tempb}{4}{subsubsubsection}
+            {subsubsubsubsection}}}}
 }
 
 \newcommand*\climbingarea[3]{%
