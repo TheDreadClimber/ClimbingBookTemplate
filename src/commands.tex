@@ -1,5 +1,5 @@
 \edef\tempa{}%
-
+\newcounter{nestedlevel}
 % Define a macro to move articles to the end
 \newcommand{\movename}[2]{%
   \IfBeginWith{#1}{The }%
@@ -41,14 +41,45 @@
   \markboth{#1}{#1}
 }
 
+\newcommand\leveltype[1]{%
+    \edef\tempb{#1}%
+    \ifx\tempb{1}
+        section
+    \else\ifx\tempb{2}
+            subsection
+        \else\ifx\tempb{3}
+                subsubsection
+            \else\ifx\tempb{4}
+                    subsubsubsection
+                \fi
+            \fi
+        \fi
+    \fi
+}
+
+\newcommand*\climbingarea[3]{%
+% A Crag, cliff, sector, etc
+% name
+% header
+% multicol content
+    \addtocounter{nestedlevel}{1}
+    \section*{#1}
+    \addcontentsline{toc}{\leveltype{\thenestedlevel}}{#1}#2
+    \begin{multicols}{2}%
+        \resetcstep#3
+    \end{multicols}
+    \addtocounter{nestedlevel}{-1}
+}
 \newcommand*\crag[3]{%
 % A Crag can contain any mix of walls, boulder fields, or boulders.
 % name, header, content
+    \addtocounter{nestedlevel}{1}
     \section*{#1}
     \addcontentsline{toc}{section}{#1}#2
     \begin{multicols}{2}%
         \resetcstep#3
     \end{multicols}
+    \addtocounter{nestedlevel}{-1}
 }
 
 \newcommand*\boulderfield[3]{%
