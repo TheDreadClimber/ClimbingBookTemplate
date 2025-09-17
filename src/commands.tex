@@ -35,27 +35,24 @@
   \fi
 }
 
-\newcommand*\climbingregion[1]{
-  \chapter*{#1}
-  \addcontentsline{toc}{chapter}{#1}
-  \markboth{#1}{#1}
-}
-
 \newcommand*\climbingarea[3]{%
   \addtocounter{nestedlevel}{1}%
-  \section*{#1}%
   \begingroup
     \ifnum\value{nestedlevel}=1
+       \chapter*{#1}
+       \addcontentsline{toc}{chapter}{#1}
+       \markboth{#1}{#1}
+    \else\section*{#1}\ifnum\value{nestedlevel}=2
       \addcontentsline{toc}{section}{#1}%
-    \else\ifnum\value{nestedlevel}=2
-      \addcontentsline{toc}{subsection}{#1}%
     \else\ifnum\value{nestedlevel}=3
-      \addcontentsline{toc}{subsubsection}{#1}%
+      \addcontentsline{toc}{subsection}{#1}%
     \else\ifnum\value{nestedlevel}=4
+      \addcontentsline{toc}{subsubsection}{#1}%
+    \else\ifnum\value{nestedlevel}=5
       \addcontentsline{toc}{paragraph}{#1}%
     \else
       \addcontentsline{toc}{subparagraph}{#1}%
-    \fi\fi\fi\fi
+    \fi\fi\fi\fi\fi
   \endgroup
   #2
   \begin{multicols}{2}%
