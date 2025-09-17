@@ -42,7 +42,7 @@
        \chapter*{#1}
        \addcontentsline{toc}{chapter}{#1}
        \markboth{#1}{#1}
-    \else\section*{#1}%\ifnum\value{nestedlevel}=2
+    \else\section*{#1}\ifnum\value{nestedlevel}=2
       \addcontentsline{toc}{section}{#1}%
     \else\ifnum\value{nestedlevel}=3
       \addcontentsline{toc}{subsection}{#1}%
