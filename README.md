@@ -11,12 +11,12 @@ The project uses the standard `book` class in LaTeX, with separate files for cha
 ```
 src
   ├── main.tex          % The main LaTeX file – compile this one
-  ├── Introduction.tex  % Your introduction section
   ├── frontmatter.tex   % Content before the main chapters (e.g., title page, TOC)
   ├── backmatter.tex    % Content after the main chapters (e.g., bibliography, index)
   └── figures/          % (Optional) Directory for images
+Introduction.tex      % Your introduction section
 chapters.tex          % Define and include your chapters here
-config.inc.           % Set values for the dynamic content in the template.
+config.tex            % Set values for the dynamic content in the template.
 ```
 
 ---
@@ -59,12 +59,10 @@ config.inc.           % Set values for the dynamic content in the template.
 
 ## 🧗 Tips  
 
-- Use `\climbingregion{}` for new chapters.
-- A `\boulderfield` and `\crag` will listed in the Table of Contents. They can contain routes or `\cliffs` and `\boulders`.
-- The `\boulder{}` and `\cliff{}` structures are meant to only contain problems and routes.  
+- Use neated `\climbingarea{}` for new chapters and sections.
 
 ---
 
 ## ⚖️ License  
 
-This template is released under the [MIT License](LICENSE). Feel free to use and modify it for your own climbing book projects.  
+This template is released under the [MIT License](LICENSE). Feel free to use and modify it for your own climbing book projects.
