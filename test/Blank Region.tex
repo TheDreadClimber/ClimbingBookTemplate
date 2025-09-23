@@ -1,14 +1,35 @@
 \climbingarea{Region 1}{%
 This is the description for region 1.
+\def\chart1{%
+  \pgfplotsset{width=7cm,compat=1.8}
+  \begin{tikzpicture}
+    \begin{axis}[
+        ybar stacked,
+	    bar width=15pt,
+	    nodes near coords,
+        enlargelimits=0.15,
+        legend style={at={(0.5,-0.20)},
+          anchor=north,legend columns=-1},
+        symbolic x coords={5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 5.10a, 5.10b, 5.10c},
+        xtick=data,
+        x tick label style={rotate=45,anchor=east},
+    ]
+        \addplot+[ybar] plot coordinates {(5.4,0) (5.5,0) (5.6,0) (5.7,0) (5.8,0) (5.9,1) (5.10a,0) (5.10b,0) (5.10c,0)};
+        \addplot+[ybar] plot coordinates {(5.4,0) (5.5,0) (5.6,0) (5.7,0) (5.8,0) (5.9,0) (5.10a,0) (5.10b,0) (5.10c,1)};
+    \end{axis}
+  \end{tikzpicture}
+}
+\def\chart2{%
+}
 \climbingarea{First Wall}{%
     This is the description for the first wall.\\
     \begin{tabular}{c c c c} 
           \toprule
           Wall & Routes & Grades & Classics \\ 
           \midrule
-          First Wall & 2 & 5.9--10c &   \\ 
+          First Wall & 2 & \chart1 &   \\ 
           \midrule
-          Boulderfield Wall & 8 & 5.4--10a & Sporty McSportface \\ [1ex]
+          Boulderfield Wall & 8 & \chart2 & Sporty McSportface \\ [1ex]
           \bottomrule
         \end{tabular}
     \climbheader{}{What is the access information}{How do you get there}{}
