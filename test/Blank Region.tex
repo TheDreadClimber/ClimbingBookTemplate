@@ -1,12 +1,12 @@
 \climbingarea{Region 1}{%
 This is the description for region 1.
 \def\chartone{%
-  \pgfplotsset{width=7cm,compat=1.8}
+  \pgfplotsset{width=7cm,height=1cm,compat=1.8}
   \begin{tikzpicture}
     \begin{axis}[
+	    axis lines=none,
         ybar stacked,
 	    bar width=15pt,
-	    nodes near coords,
         enlargelimits=0.15,
         legend style={at={(0.5,-0.20)},
           anchor=north,legend columns=-1},
