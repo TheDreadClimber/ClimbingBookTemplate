@@ -62,8 +62,10 @@
 }
 \def\chartonev{%
   \begin{climbhcvart}
-	    \addplot table[x=sport,y=grade]{\climbdataone};% chktex 1
-        \addplot table[x=trad,y=grade]{\climbdataone};% chktex 1
+	    \addplot
+		    table[x=sport,y=grade]{\climbdataone};% chktex 1
+        \addplot
+		    table[x=trad,y=grade]{\climbdataone};
   \end{climbvchart}
 }
 \pgfplotstableread{
