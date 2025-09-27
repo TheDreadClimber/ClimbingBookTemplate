@@ -29,15 +29,15 @@ This is the description for region 1.
         ybar stacked,
 	    bar width=15pt,
         enlargelimits=0.15,
-        symbolic x coords={\leq.6, .7, .8, .9, .10, .11, .12, .13, .14},
+        symbolic x coords={$\leq.6$, .7, .8, .9, .10, .11, .12, .13, .14},
         xtick=data,
         xtick style={draw=none},
         ytick=\empty,
         x tick label style={font=\tiny},
     ]
-	    \addplot+[ybar,color=white] plot coordinates {(\leq.6,0) (.7,0) (.8,0) (.9,0) (.10, 0) (.11,0) (.12,0)};
-	    \addplot+[ybar,color=blue] plot coordinates {(\leq.6,1) (.7,0) (.8,0) (.9,0) (.10,2)};
-        \addplot+[ybar,color=red] plot coordinates {(\leq.6,1) (.9,1) (.10,1)};
+	    \addplot+[ybar,color=white] plot coordinates {($\leq.6$,0) (.7,0) (.8,0) (.9,0) (.10, 0) (.11,0) (.12,0)};
+	    \addplot+[ybar,color=blue] plot coordinates {($\leq.6$,1) (.7,0) (.8,0) (.9,0) (.10,2)};
+        \addplot+[ybar,color=red] plot coordinates {($\leq.6$,1) (.9,1) (.10,1)};
     \end{axis}
   \end{tikzpicture}
 }
