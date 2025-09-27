@@ -65,14 +65,23 @@ grade   sport  trad   boulder
         \bottomrule
     \end{tabular}
     \climbingarea{First Wall}{%
-        \climbheader{This is the description for the first wall.}{What is the access information}{How do you get there}{}
+	    \begin{minipage}{0.1\textwidth}
+	        {\chartonev}
+		\end{minipage}
+		\begin{minipage}{0.85\textwidth}
+            \climbheader{This is the description for the first wall.}{What is the access information}{How do you get there}{}
+		\end{minipage}
     }{%
         \tradroute[X]{The Trad Route Name}{5.9}{Use anchors on the next route.}{70}{Santa Claus}
         \sportroute{Sport Route Name}{5.10c}{Jug to the top.}{70}{5}{Jane Doe}
     }
     \climbingarea{Boulderfield Name}{%
-	    {\charttwov}
-        \climbheader{\lipsum[1][1]}{\lipsum[1][2-4]}{\lipsum[1][5-7]}{\lipsum[1][8]}% chktex 8
+	    \begin{minipage}{0.1\textwidth}
+	        {\charttwov}
+		\end{minipage}
+		\begin{minipage}{0.85\textwidth}
+            \climbheader{\lipsum[1][1]}{\lipsum[1][2-4]}{\lipsum[1][5-7]}{\lipsum[1][8]}% chktex 8
+		\end{minipage}
         \climbingarea{Big Rock}{}{%
             \boulderproblem{A Problem}{V3}{Problem Description}{10}{Alan Smithee}
             \tradroute{Another Fun Route}{5.10a}{Make sure the route numbers are not indented}{5}{Jolly Roger}
