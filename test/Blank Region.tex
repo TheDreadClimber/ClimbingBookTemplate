@@ -7,19 +7,22 @@ This is the description for region 1.
 }
 \pgfplotsset{width=8cm,compat=1.17}
 \def\chartone{%
-  \begin{tikzpicture}
+  \begin{tikzpicture}[inner sep=-3, outer sep=5]
     \begin{axis}[
-	    y=1mm,
-	    axis lines=left,
-		axis line style={draw=white},
+        y=1mm,
+        axis x line=bottom,      % Show x-axis line at the bottom
+        axis y line=none,        % Hide y-axis lines (left and right)
+        axis line style={-},     % No arrowheads, just plain lines
         ybar stacked,
-	    bar width=15pt,
-        enlargelimits=0.15,
-        symbolic x coords={$\leq.6$, .7, .8, .9, .10, .11, .12, .13, .14},
+        symbolic x coords={${\leq}.6$, .7, .8, .9, .10, .11, .12, .13, .14},
         xtick=data,
-		xtick style={draw=none},
-		ytick=\empty,
-        x tick label style={font=\small},
+        xtick style={draw=none},
+        ytick=\empty,
+        x tick label style={font=\scriptsize},
+        ymin=0,
+        enlargelimits=0.05,
+        enlarge y limits={abs=0},
+		cycle list name=climbing
     ]
 	    \addplot+[ybar] plot coordinates {($\leq.6$,0) (.7,0) (.8,0) (.9,0) (.10,1) (.11,0) (.12,0) (.13,0) (.14,0)};
         \addplot+[ybar] plot coordinates {(.9,1)};
@@ -27,23 +30,22 @@ This is the description for region 1.
   \end{tikzpicture} 
 }
 \def\charttwo{%
-  \begin{tikzpicture}
+  \begin{tikzpicture}[inner sep=-3, outer sep=5]
     \begin{axis}[
-	    y=1mm,
-	    axis x line=bottom,      % Show x-axis line at the bottom
+        y=1mm,
+        axis x line=bottom,      % Show x-axis line at the bottom
         axis y line=none,        % Hide y-axis lines (left and right)
         axis line style={-},     % No arrowheads, just plain lines
         ybar stacked,
-	    bar width=15pt,
-        enlargelimits=0.15,
         symbolic x coords={${\leq}.6$, .7, .8, .9, .10, .11, .12, .13, .14},
         xtick=data,
         xtick style={draw=none},
         ytick=\empty,
         x tick label style={font=\scriptsize},
         ymin=0,
-        enlarge y limits={abs=0}, % <-- removes the gap between bars and x-axis
-		cycle list name=climbing,
+        enlargelimits=0.05,
+        enlarge y limits={abs=0},
+		cycle list name=climbing
     ]
 	    \addplot coordinates {(${\leq}.6$,1) (.7,0) (.8,0) (.9,0) (.10,2) (.11,0) (.12,0) (.13,0) (.14,0)};
         \addplot coordinates {(${\leq}.6$,1) (.7,0) (.8,0) (.9,0) (.10,1)};
