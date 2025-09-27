@@ -1,7 +1,6 @@
 \climbingarea{Region 1}{%
 This is the description for region 1.
 \pgfplotscreateplotcyclelist{climbing}{
-    {white,fill=white,mark=none},
 	{blue,fill=blue!30!white,mark=none},
     {red,fill=red!30!white,mark=none},
     {green,fill=green!60!white,mark=none}
@@ -41,8 +40,7 @@ This is the description for region 1.
         x tick label style={font=\tiny},
 		cycle list name=climbing,
     ]
-	    \addplot coordinates {($\leq.6$,0) (.7,0) (.8,0) (.9,0) (.10, 0) (.11,0) (.12,0)};
-	    \addplot coordinates {($\leq.6$,1) (.7,0) (.8,0) (.9,0) (.10,2)};
+	    \addplot coordinates {($\leq.6$,0) (.7,0) (.8,0) (.9,0) (.10, 2) (.11,0) (.12,0) (.13,0) (.14,0)};
         \addplot coordinates {($\leq.6$,1) (.9,1) (.10,1)};
     \end{axis}
   \end{tikzpicture}
