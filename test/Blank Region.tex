@@ -80,7 +80,6 @@ grade   sport  trad   boulder
 .13     0      0      0
 .14     0      0      0
 }\climbdataone
-
 \pgfplotstableread{
 grade   sport  trad
 <=.6    0      0
@@ -93,7 +92,6 @@ grade   sport  trad
 .13     0      0
 .14     0      0
 }\climbdatatwo
-
 \def\charttwoh{%
     \begin{climbhchart}
         \addplot table[x=grade,y=sport]{\climbdatatwo};% chktex 1
