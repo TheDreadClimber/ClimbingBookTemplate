@@ -8,37 +8,92 @@
     \begin{tikzpicture}[inner sep=-3, outer sep=5]
       \begin{axis}[
         y=1mm,
-        axis x line=bottom,      % Show x-axis line at the bottom
-        axis y line=none,        % Hide y-axis lines (left and right)
-        axis line style={-},     % No arrowheads, just plain lines
+        axis x line=bottom,
+        axis y line=none,
+        axis line style={-},
         ybar stacked,
-        symbolic x coords={${\leq}.6$, .7, .8, .9, .10, .11, .12, .13, .14},
+        symbolic x coords={<=.6, .7, .8, .9, .10, .11, .12, .13, .14},
         xtick=data,
         xtick style={draw=none},
         ytick=\empty,
         x tick label style={font=\scriptsize},
+        xticklabels={${\leq}.6 $, .7, .8, .9, .10, .11, .12, .13, .14}, % Math display for x labels
         ymin=0,
         enlargelimits=0.05,
         enlarge y limits={abs=0},
-		cycle list name=climbing
+        cycle list name=climbing
       ]%
 }{%
       \end{axis}
     \end{tikzpicture}
 }
 
-\def\chartone{%
+\newenvironment{climbvchart}{%
+    \begin{tikzpicture}[inner sep=-3, outer sep=5]
+      \begin{axis}[
+        x=1mm,
+        axis y line=left,
+        axis x line=none,
+        axis line style={-},
+        xbar stacked,
+        symbolic y coords={<=.6, .7, .8, .9, .10, .11, .12, .13, .14},
+        ytick=data,
+        ytick style={draw=none},
+        xtick=\empty,
+        y tick label style={font=\scriptsize},
+        yticklabels={$ {\leq}.6 $, .7, .8, .9, .10, .11, .12, .13, .14}, % Math display for y labels
+        xmin=0,
+        enlargelimits=0.05,
+        enlarge x limits={abs=0},
+        cycle list name=climbing,
+        width=8cm,
+        height=5cm,
+      ]%
+}{%
+      \end{axis}
+    \end{tikzpicture}
+}
+
+\def\chartoneh{%
   \begin{climbhchart}
-	    \addplot coordinates {(${\leq}.6$,0) (.7,0) (.8,0) (.9,0) (.10,1) (.11,0) (.12,0) (.13,0) (.14,0)};% chktex 1
-        \addplot coordinates {(.9,1)};% chktex 1
+	    \addplot table[x=sport,y=grade{\climbdataone};
+        \addplot table[x=trad,y=grade]{\climbdataone};
   \end{climbhchart}
 }
-\def\charttwo{%
-  \begin{climbhchart}
-	    \addplot coordinates {(${\leq}.6$,1) (.7,0) (.8,0) (.9,0) (.10,2) (.11,0) (.12,0) (.13,0) (.14,0)};% chktex 1
-        \addplot coordinates {(${\leq}.6$,1) (.7,0) (.8,0) (.9,0) (.10,1) (.11,0) (.12,0) (.13,0) (.14,0)};% chktex 1
-		\addplot coordinates {(${\leq}.6$,0) (.7,0) (.8,1) (.9,0) (.10,0) (.11,1)};% chktex 1
+\def\chartonev{%
+  \begin{climbhcvart}
+	    \addplot table[x=sport,y=grade{\climbdataone};
+        \addplot table[x=trad,y=grade]{\climbdataone};
   \end{climbhchart}
+}
+
+\pgfplotstableread{
+grade   sport  trad   boulder
+<=.6    1      1      0
+.7      0      0      0
+.8      0      0      1
+.9      0      0      0
+.10     2      1      0
+.11     0      0      1
+.12     0      0      0
+.13     0      0      0
+.14     0      0      0
+}\climbdatatwo
+
+\def\charttwoh{%
+    \begin{climbhchart}
+        \addplot table[x=grade,y=sport{\climbdatatwo};
+        \addplot table[x=grade,y=trad]{\climbdatatwo};
+        \addplot table[x=grade,y=boulder]{\climbdatatwo};
+    \end{climbhchart}
+}
+
+\def\charttwov{%
+    \begin{climbhchart}
+        \addplot table[y=grade,x=sport{\climbdatatwo};
+        \addplot table[y=grade,x=trad]{\climbdatatwo};
+        \addplot table[y=grade,x=boulder]{\climbdatatwo};
+    \end{climbhchart}
 }
 
 \climbingarea{Region 1}{%
@@ -47,9 +102,9 @@
         \toprule
         Wall & Routes & Grades & Classics \\ 
         \midrule
-        First Wall & 2 & \chartone&   \\ 
+        First Wall & 2 & \chartoneh&   \\ 
         \midrule
-        Boulderfield Wall & 8 & \charttwo& Sporty McSportface \\ [1ex]
+        Boulderfield Wall & 8 & \charttwoh& Sporty McSportface \\ [1ex]
         \bottomrule
     \end{tabular}
     \climbingarea{First Wall}{%
@@ -59,6 +114,7 @@
         \sportroute{Sport Route Name}{5.10c}{Jug to the top.}{70}{5}{Jane Doe}
     }
     \climbingarea{Boulderfield Name}{%
+	    \charttwov
         \climbheader{\lipsum[1][1]}{\lipsum[1][2-4]}{\lipsum[1][5-7]}{\lipsum[1][8]}% chktex 8
         \climbingarea{Big Rock}{}{%
             \boulderproblem{A Problem}{V3}{Problem Description}{10}{Alan Smithee}
