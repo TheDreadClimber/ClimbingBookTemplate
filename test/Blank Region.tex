@@ -56,14 +56,14 @@
 
 \def\chartoneh{%
   \begin{climbhchart}
-	    \addplot table[x=sport,y=grade{\climbdataone};
-        \addplot table[x=trad,y=grade]{\climbdataone};
+	    \addplot table[x=sport,y=grade]{\climbdataone};
+        \addplot table[x=trad,y=grade]{\climbdataone};% chktex 1
   \end{climbhchart}
 }
 \def\chartonev{%
   \begin{climbhcvart}
-	    \addplot table[x=sport,y=grade{\climbdataone};
-        \addplot table[x=trad,y=grade]{\climbdataone};
+	    \addplot table[x=sport,y=grade]{\climbdataone};% chktex 1
+        \addplot table[x=trad,y=grade]{\climbdataone};% chktex 1
   \end{climbhchart}
 }
 \pgfplotstableread{
@@ -94,17 +94,17 @@ grade   sport  trad
 
 \def\charttwoh{%
     \begin{climbhchart}
-        \addplot table[x=grade,y=sport{\climbdatatwo};
-        \addplot table[x=grade,y=trad]{\climbdatatwo};
-        \addplot table[x=grade,y=boulder]{\climbdatatwo};
+        \addplot table[x=grade,y=sport]{\climbdatatwo};% chktex 1
+        \addplot table[x=grade,y=trad]{\climbdatatwo};% chktex 1
+        \addplot table[x=grade,y=boulder]{\climbdatatwo};% chktex 1
     \end{climbhchart}
 }
 
 \def\charttwov{%
     \begin{climbhchart}
-        \addplot table[y=grade,x=sport{\climbdatatwo};
-        \addplot table[y=grade,x=trad]{\climbdatatwo};
-        \addplot table[y=grade,x=boulder]{\climbdatatwo};
+        \addplot table[y=grade,x=sport]{\climbdatatwo};% chktex 1
+        \addplot table[y=grade,x=trad]{\climbdatatwo};% chktex 1
+        \addplot table[y=grade,x=boulder]{\climbdatatwo};% chktex 1
     \end{climbhchart}
 }
 
