@@ -1,14 +1,15 @@
-\climbingarea{Region 1}{%
+t\climbingarea{Region 1}{%
 This is the description for region 1.
 \pgfplotscreateplotcyclelist{climbing}{
 	{blue,fill=blue!30!white,mark=none},
     {red,fill=red!30!white,mark=none},
     {green,fill=green!60!white,mark=none}
 }
-\pgfplotsset{width=8cm,height=3cm,compat=1.17}
+\pgfplotsset{width=8cm,compat=1.17}
 \def\chartone{%
   \begin{tikzpicture}
     \begin{axis}[
+	    y=1mm,
 	    axis lines=left,
 		axis line style={draw=white},
         ybar stacked,
@@ -28,6 +29,7 @@ This is the description for region 1.
 \def\charttwo{%
   \begin{tikzpicture}
     \begin{axis}[
+	    y=1mm,
 	    axis x line=bottom,      % Show x-axis line at the bottom
         axis y line=none,        % Hide y-axis lines (left and right)
         axis line style={-},     % No arrowheads, just plain lines
