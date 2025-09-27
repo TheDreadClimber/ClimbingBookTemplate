@@ -21,9 +21,10 @@ This is the description for region 1.
   \end{tikzpicture} 
 }
 \def\charttwo{%
-  \pgfplotsset{cycle list={{white, fill=white},{blue,fill=blue!50!white},{red, fill=red!50!white},{green, fill=green!50!white}},width=7cm,height=2cm,compat=1.8}
+  \pgfplotsset{width=7cm,height=2cm,compat=1.8}
   \begin{tikzpicture}
     \begin{axis}[
+	    cycle list={{white, fill=white},{blue,fill=blue!50!white},{red, fill=red!50!white},{green, fill=green!50!white}},
 	    axis lines=left,
 		axis line style={draw=white},
         ybar stacked,
