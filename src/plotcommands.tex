@@ -1,0 +1,55 @@
+\pgfplotsset{compat=1.17}
+\pgfplotscreateplotcyclelist{climbing}{
+	{blue,fill=blue!30!white,mark=none},
+    {red,fill=red!30!white,mark=none},
+    {green!70!black,fill=green!60!white,mark=none}
+}
+\newenvironment{climbhchart}{%
+    \begin{tikzpicture}[inner sep=-3, outer sep=5]
+      \begin{axis}[
+        y=1mm,
+        axis x line=bottom,
+        axis y line=none,
+        axis line style={-},
+        ybar stacked,
+        symbolic x coords={<=.6, .7, .8, .9, .10, .11, .12, .13, .14},
+        xtick=data,
+        xtick style={draw=none},
+        ytick=\empty,
+        x tick label style={font=\scriptsize},
+        xticklabels={${\leq}.6 $, .7, .8, .9, .10, .11, .12, .13, .14}, % Math display for x labels
+        ymin=0,
+        enlargelimits=0.05,
+        enlarge y limits={abs=0},
+        cycle list name=climbing
+      ]%
+}{%
+      \end{axis}
+    \end{tikzpicture}
+}
+
+\newenvironment{climbvchart}{%
+    \begin{tikzpicture}[inner sep=-3, outer sep=5]
+      \begin{axis}[
+        x=1mm,
+        axis y line=left,
+        axis x line=none,
+        axis line style={-},
+        xbar stacked,
+        symbolic y coords={<=.6, .7, .8, .9, .10, .11, .12, .13, .14},
+        ytick=data,
+        ytick style={draw=none},
+        xtick=\empty,
+        y tick label style={font=\scriptsize},
+        yticklabels={$ {\leq}.6 $, .7, .8, .9, .10, .11, .12, .13, .14}, % Math display for y labels
+        xmin=0,
+        enlargelimits=0.1,
+        enlarge x limits={abs=0},
+        cycle list name=climbing,
+        width=8cm,
+        height=5cm,
+      ]%
+}{%
+      \end{axis}
+    \end{tikzpicture}
+}
