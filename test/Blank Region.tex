@@ -18,7 +18,7 @@ This is the description for region 1.
 	    \addplot+[ybar] plot coordinates {(5.10c,1)};
         \addplot+[ybar] plot coordinates {(5.9,1)};
     \end{axis}
-  \end{tikzpicture}
+  \end{tikzpicture} 
 }
 \def\charttwo{%
   \pgfplotsset{width=7cm,height=2cm,compat=1.8}
@@ -29,15 +29,15 @@ This is the description for region 1.
         ybar stacked,
 	    bar width=15pt,
         enlargelimits=0.15,
-        symbolic x coords={5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 10a, 10b, 10c},
+        symbolic x coords={≤.6, .7, .8, .9, .10, .11, .12, .13, .14},
         xtick=data,
         xtick style={draw=none},
         ytick=\empty,
         x tick label style={font=\tiny},
     ]
-	    \addplot+[ybar,color=white] plot coordinates {(5.4,0) (5.5,0) (5.6,0) (5.8,0) (5.8,0) (5.7, 0) (5.9,0) (10a,0) (10b,0) (10c,0)};
-	    \addplot+[ybar,color=blue] plot coordinates {(5.4,0) (5.6, 1) (5.9,0) (10a,2)};
-        \addplot+[ybar,color=red] plot coordinates {(5.4,1) (5.6,0) (5.9,1) (10a,1)};
+	    \addplot+[ybar,color=white] plot coordinates {(≤.6,0) (.7,0) (.8,0) (.9,0) (.10, 0) (.11,0) (.12,0)};
+	    \addplot+[ybar,color=blue] plot coordinates {(≤.6,1) (.7,0) (.8,0) (.9,0) (.10,2)};
+        \addplot+[ybar,color=red] plot coordinates {(≤.6,1) (.9,1) (.10,1)};
     \end{axis}
   \end{tikzpicture}
 }
