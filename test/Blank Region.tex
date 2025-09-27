@@ -15,14 +15,14 @@ This is the description for region 1.
         ybar stacked,
 	    bar width=15pt,
         enlargelimits=0.15,
-        symbolic x coords={5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 5.10a, 5.10b, 5.10c},
+        symbolic x coords={$\leq.6$, .7, .8, .9, .10, .11, .12, .13, .14},
         xtick=data,
 		xtick style={draw=none},
 		ytick=\empty,
         x tick label style={font=\tiny},
     ]
-	    \addplot+[ybar] plot coordinates {(5.10c,1)};
-        \addplot+[ybar] plot coordinates {(5.9,1)};
+	    \addplot+[ybar] plot coordinates {($\leq.6$,NA) (.7,NA) (.8,NA) (.9,NA) (.10,1) (.11,NA) (.12,NA) (.13,NA) (.14,NA)};
+        \addplot+[ybar] plot coordinates {(.9,1)};
     \end{axis}
   \end{tikzpicture} 
 }
