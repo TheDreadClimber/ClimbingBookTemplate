@@ -1,20 +1,93 @@
+\pgfplotstableread{
+grade   sport  trad
+<=.6    0      0
+.7      0      0
+.8      0      0
+.9      0      1
+.10     1      0
+.11     0      0
+.12     0      0
+.13     0      0
+.14     0      0
+}{\climbdataone}
+
+\def\chartoneh{%
+  \begin{climbhchart}
+	    \addplot table[y=sport,x=grade]{\climbdataone};% chktex 1
+        \addplot table[y=trad,x=grade]{\climbdataone};% chktex 1
+  \end{climbhchart}
+}
+\def\chartonev{%
+  \begin{climbvchart}
+	    \addplot table[x=sport,y=grade]{\climbdataone};% chktex 1
+        \addplot table[x=trad,y=grade]{\climbdataone};% chktex 1
+  \end{climbvchart}
+}
+
+\pgfplotstableread{
+grade   sport  trad   boulder
+<=.6    1      1      0
+.7      0      0      0
+.8      0      0      1
+.9      0      0      0
+.10     2      1      0
+.11     0      0      1
+.12     0      0      0
+.13     0      0      0
+.14     0      0      0
+}{\climbdatatwo}
+
+\def\charttwoh{%
+    \begin{climbhchart}
+        \addplot table[x=grade,y=sport]{\climbdatatwo};% chktex 1
+        \addplot table[x=grade,y=trad]{\climbdatatwo};% chktex 1
+        \addplot table[x=grade,y=boulder]{\climbdatatwo};% chktex 1
+    \end{climbhchart}
+}
+
+\def\charttwov{%
+    \begin{climbvchart}
+        \addplot table[y=grade,x=sport]{\climbdatatwo};% chktex 1
+        \addplot table[y=grade,x=trad]{\climbdatatwo};% chktex 1
+        \addplot table[y=grade,x=boulder]{\climbdatatwo};% chktex 1
+    \end{climbvchart}
+}
+
 \climbingarea{Region 1}{%
-This is the description for region 1.
-\climbingarea{First Wall}{%
-    This is the description for the first wall.\\
-    \climbheader{}{What is the access information}{How do you get there}{}
+    \climbheader{This region is the best region.}{What is the access information}{How do you get there}{What's the weather like up there?}\\
+    \begin{tabular}{c c c c} 
+        \toprule
+        Wall & Routes & Grades & Classics \\ 
+        \midrule
+        First Wall & 2 & \chartoneh&   \\ 
+        \midrule
+        Boulderfield Wall & 8 & \charttwoh& Sporty McSportface \\ [1ex]
+        \bottomrule
+    \end{tabular}
+    \climbingarea{First Wall}{%
+	    \begin{minipage}{0.15\textwidth}
+		    2 Routes\\
+	        {\chartonev}
+		\end{minipage}
+		\begin{minipage}{0.8\textwidth}
+            \climbheader{This is the description for the first wall.}{What is the access information}{How do you get there}{}
+		\end{minipage}
     }{%
         \tradroute[X]{The Trad Route Name}{5.9}{Use anchors on the next route.}{70}{Santa Claus}
         \sportroute{Sport Route Name}{5.10c}{Jug to the top.}{70}{5}{Jane Doe}
     }
     \climbingarea{Boulderfield Name}{%
-        \climbheader{}{Access Info}{}{}
-        \climbingarea{Big Rock}{%
+	    \begin{minipage}{0.15\textwidth}
+		    8 Routes\\
+	        {\charttwov}
+		\end{minipage}
+		\begin{minipage}{0.8\textwidth}
             \climbheader{\lipsum[1][1]}{\lipsum[1][2-4]}{\lipsum[1][5-7]}{\lipsum[1][8]}% chktex 8
-        }{%
+		\end{minipage}
+        \climbingarea{Big Rock}{}{%
             \boulderproblem{A Problem}{V3}{Problem Description}{10}{Alan Smithee}
             \tradroute{Another Fun Route}{5.10a}{Make sure the route numbers are not indented}{5}{Jolly Roger}
-            \sportroute{Sprty McSportface}{5.10a}{\lipsum[1][9-10]}{5}{15}{Dr.\ Who}% chktex 8
+            \sportroute{Sporty McSportface}{5.10a}{\lipsum[1][9-10]}{5}{15}{Dr.\ Who}% chktex 8
             \boulderproblem{B Problem}{V0-}{\lipsum[1][11-12]}{15}{James Bond}% chktex 8
             \mixedtradroute{A Bolt or Two}{5.4}{\lipsum[1][13]}{100}{2}{Twista Bolten}
             \toproperoute{No Bolts}{5.6}{\lipsum[2][1-2]}{25}{Cher}% chktex 8
