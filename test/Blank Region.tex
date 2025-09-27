@@ -1,11 +1,12 @@
 \climbingarea{Region 1}{%
 This is the description for region 1.
-\pgfplotsset{/pgfplots/bar cycle list/.style={/pgfplots/cycle list={
-    {white,fill=white,mark=none}
-    {blue,fill=blue!30!white,mark=none},
+\pgfplotscreateplotcyclelist{climbing}{
+    {white,fill=white,mark=none},
+	{blue,fill=blue!30!white,mark=none},
     {red,fill=red!30!white,mark=none},
-    {green,fill=green!50!white,mark=none},
-},},width=7cm,height=2cm,compat=1.8}
+    {green,fill=green!60!white,mark=none}
+}
+\pgfplotsset{width=7cm,height=2cm,compat=1.8}
 \def\chartone{%
   \begin{tikzpicture}
     \begin{axis}[
@@ -30,6 +31,7 @@ This is the description for region 1.
     \begin{axis}[
 	    axis lines=left,
 		axis line style={draw=white},
+		cycle list name=climbing
         ybar stacked,
 	    bar width=15pt,
         enlargelimits=0.15,
