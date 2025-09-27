@@ -5,7 +5,7 @@ This is the description for region 1.
     {red,fill=red!30!white,mark=none},
     {green,fill=green!60!white,mark=none}
 }
-\pgfplotsset{width=7cm,height=2cm,compat=1.17}
+\pgfplotsset{width=8cm,height=2cm,compat=1.17}
 \def\chartone{%
   \begin{tikzpicture}
     \begin{axis}[
@@ -33,15 +33,15 @@ This is the description for region 1.
         ybar stacked,
 	    bar width=15pt,
         enlargelimits=0.15,
-        symbolic x coords={$\leq.6$, .7, .8, .9, .10, .11, .12, .13, .14},
+        symbolic x coords={${\leq}.6$, .7, .8, .9, .10, .11, .12, .13, .14},
         xtick=data,
         xtick style={draw=none},
         ytick=\empty,
         x tick label style={font=\tiny},
 		cycle list name=climbing,
     ]
-	    \addplot coordinates {($\leq.6$,1) (.7,0) (.8,0) (.9,0) (.10, 2) (.11,0) (.12,0) (.13,0) (.14,0)};
-        \addplot coordinates {($\leq.6$,1) (.9,0) (.10,1)};
+	    \addplot coordinates {(${\leq}.6$,1) (.7,0) (.8,0) (.9,0) (.10, 2) (.11,0) (.12,0) (.13,0) (.14,0)};
+        \addplot coordinates {(${\leq}.6$,1) (.9,0) (.10,1)};
     \end{axis}
   \end{tikzpicture}
 }
