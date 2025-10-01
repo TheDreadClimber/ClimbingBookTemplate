@@ -76,3 +76,28 @@
       \end{axis}
     \end{tikzpicture}
 }
+
+\newenvironment{climbvchart}{%
+    \begin{tikzpicture}[inner sep=-3, outer sep=5]
+      \begin{axis}[
+        x=1mm,
+        axis y line=left,
+        axis x line=none,
+        axis line style={-},
+        xbar stacked,
+        symbolic y coords={B/0, 1/2, 3/4, 5/6, 7/8, 9/10, 11/12},
+        ytick=data,
+        ytick style={draw=none},
+        xtick=\empty,
+        y tick label style={font=\scriptsize},
+        xmin=0,
+        enlargelimits=0.1,
+        enlarge x limits={abs=0},
+        cycle list name=climbing,
+        width=8cm,
+        height=5cm,
+      ]%
+}{%
+      \end{axis}
+    \end{tikzpicture}
+}
