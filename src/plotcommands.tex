@@ -53,3 +53,26 @@
       \end{axis}
     \end{tikzpicture}
 }
+
+\newenvironment{boulderhchart}{%
+    \begin{tikzpicture}[inner sep=-3, outer sep=5]
+      \begin{axis}[
+        y=1mm,
+        axis x line=bottom,
+        axis y line=none,
+        axis line style={-},
+        ybar stacked,
+        symbolic x coords={B/0, 1/2, 3/4, 5/6, 7/8, 9/10, 11/12},
+        xtick=data,
+        xtick style={draw=none},
+        ytick=\empty,
+        x tick label style={font=\scriptsize},
+        ymin=0,
+        enlargelimits=0.05,
+        enlarge y limits={abs=0},
+        cycle list name=climbing
+      ]%
+}{%
+      \end{axis}
+    \end{tikzpicture}
+}
