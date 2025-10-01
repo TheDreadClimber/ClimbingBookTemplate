@@ -26,23 +26,21 @@ grade   sport  trad
 
 \pgfplotstableread{
 grade   sport  trad   boulder
-<=.6    1      1      0
-.7      0      0      0
-.8      0      0      1
-.9      0      0      0
-.10     2      1      0
-.11     0      0      1
-.12     0      0      0
-.13     0      0      0
-.14     0      0      0
+VB/0    0      0      0
+V1/2    0      0      0
+v3/4    0      0      1
+V5/6    0      0      0
+V7/8    0      0      0
+V9/10   0      0      1
+V11/12  0      0      0
 }{\climbdatatwo}
 
 \def\charttwoh{%
-    \begin{climbhchart}
+    \begin{boulderhchart}
         \addplot table[x=grade,y=sport]{\climbdatatwo};% chktex 1
         \addplot table[x=grade,y=trad]{\climbdatatwo};% chktex 1
         \addplot table[x=grade,y=boulder]{\climbdatatwo};% chktex 1
-    \end{climbhchart}
+    \end{boulderhchart}
 }
 
 \def\charttwov{%
