@@ -117,23 +117,24 @@
   \endgroup
 }
 
-\newcommand*\iceroute[5]{%
-% {@param} #1 Name
-% {@param} #2 Grade
-% {@param} #3 Description
-% {@param} #4 Height
-% {@param} #5 FA
+\newcommand*\iceroute[6][]{%
+% {@param} #1 Optional Mixed Grade
+% {@param} #2 Name
+% {@param} #3 Grade
+% {@param} #4 Description
+% {@param} #5 Height
+% {@param} #6 FA
   \begingroup%
-    \index[iceroutesbygrade]{#2!#1}% sort by \vsort, display #2
-    \movename{#1}{\movedname}
+    \index[iceroutesbygrade]{#3!#2}% sort by \vsort, display #3
+    \movename{#2}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
     {%
       \pgfkeys{/csteps/fill color=cyan}%
       \cstep%
     } %
-    \textbf{#1} {\fontfamily{phv}\selectfont #2}\\%
-    #3\\\climbheight{#4}\textit{FA:\ #5}\par\bigskip
+    \textbf{#1} {\fontfamily{phv}\selectfont #3}\\%
+    #4\\\climbheight{#5}\textit{FA:\ #6}\par\bigskip
   \endgroup
 }
 
