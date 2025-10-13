@@ -117,7 +117,7 @@
   \endgroup
 }
 
-\newcommand*\iceroute[6][]{%
+\newcommand*\iceroute[6][\empty]{%
 % {@param} #1 Optional Mixed Grade
 % {@param} #2 Name
 % {@param} #3 Grade
@@ -127,7 +127,8 @@
   \begingroup%
     \index[iceroutesbygrade]{#3!#2}% sort by \vsort, display #3
     \edef\tempb{#1}%
-    \ifx\tempa\tempb% if mided grade supplied, index by that too.
+    \ifx\empty\tempb% if mided grade supplied, index by that too.
+    \else
         \index[iceroutesbygrade]{#1!#2}
     \fi
     \movename{#2}{\movedname}
