@@ -128,7 +128,7 @@
     \index[iceroutesbygrade]{#3!#2}% sort by \vsort, display #3
     \edef\tempb{#1}%
     \ifx\empty\tempb% if mided grade supplied, index by that too.
-    \else
+    \else%
         \index[iceroutesbygrade]{#1!#2}
     \fi
     \movename{#2}{\movedname}
