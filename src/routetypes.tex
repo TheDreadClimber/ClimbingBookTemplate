@@ -126,7 +126,10 @@
 % {@param} #6 FA
   \begingroup%
     \index[iceroutesbygrade]{#3!#2}% sort by \vsort, display #3
-    % if #1 not empty \index[iceroutesbygrade]{#1!#2}
+    \edef\tempb{#1}%
+    \ifx\tempa\tempb% if mided grade supplied, index by that too.
+        \index[iceroutesbygrade]{#1!#2}
+    \fi
     \movename{#2}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}%
