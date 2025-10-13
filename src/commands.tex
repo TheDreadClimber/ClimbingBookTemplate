@@ -15,6 +15,17 @@
     }%
 }
 
+\newcommand\myrepeat[2]{%
+  \begingroup
+  \lccode`m=`#2\relax
+  \lowercase\expandafter{\romannumeral#1000}%
+  \endgroup
+}
+
+\newcommand\stars[1]{%
+  \myrepeat{#1}{$\star$}
+}
+
 \newcommand\climbheight[1]{
     \edef\tempb{#1}%
     \ifx\tempa\tempb%
