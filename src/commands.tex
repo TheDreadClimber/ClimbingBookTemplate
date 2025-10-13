@@ -15,6 +15,10 @@
     }%
 }
 
+\newcommand{\stars}[1]{%
+  \multido{\i=1+1}{#1}{$\star$}%
+}
+
 \newcommand\climbheight[1]{
     \edef\tempb{#1}%
     \ifx\tempa\tempb%
