@@ -1,0 +1,9 @@
+\newcommand{\labelwithline}[4]{
+% number
+% circle location
+% Line End
+% color
+    \draw (#2) -- (#3);
+    \pgfkeys{/csteps/fill color=#4}
+    \node[black] at (#2){\Circled{#1}};
+}
