@@ -66,9 +66,9 @@
 % {@param} #6 FA
   \begingroup
     \pgfkeys{/climboptions/.cd,#1}%
-    \edef\ydssort{\ydssortorder{#2}}% expand to plain text
-    \index[sportroutesbygrade]{\ydssort @#2!#1}%
-    \movename{#1}{\movedname}
+    \edef\ydssort{\ydssortorder{#3}}% expand to plain text
+    \index[sportroutesbygrade]{\ydssort @#3!#2}%
+    \movename{#2}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}{%
         \pgfkeys{/csteps/fill color=Plum}%
