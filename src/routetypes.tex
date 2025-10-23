@@ -1,24 +1,32 @@
-\newcommand*\sportroute[6]{%
-% {@param} #1 Name
-% {@param} #2 Grade
-% {@param} #3 Description
-% {@param} #4 Height
-% {@param} #5 Bolts
+\pgfkeys{
+  /climboptions/.cd,
+  s/.initial={0},
+  b/.initial={?},
+  d/.initial={},
+  .unknown/.code={\pgfkeyscurrentpath/\pgfkeyscurrentkey\space undefined}
+}
+
+\newcommand*\sportroute[6][]{%
+% {@param} #1 Options (optional)
+% {@param} #2 Name
+% {@param} #3 Grade
+% {@param} #4 Description
+% {@param} #5 Height
 % {@param} #6 FA
   \begingroup
-    \edef\ydssort{\ydssortorder{#2}}% expand to plain text
-    \index[sportroutesbygrade]{\ydssort @#2!#1}%
-    \movename{#1}{\movedname}
+    \edef\ydssort{\ydssortorder{#3}}% expand to plain text
+    \index[sportroutesbygrade]{\ydssort @#3!#2}%
+    \movename{#2}{\movedname}
     \StrChar{\movedname}{1}[\FirstChar]%
     \index{\FirstChar!\movedname}{%
         \pgfkeys{/csteps/fill color=blue}%
         \cstep%
     } %
-    \textbf{#1} {%
+    \textbf{#2} {%
         \fontfamily{phv}%
-        \selectfont #2%
-    }%
-    \\#3\\\climbheight{#4}#5 Bolts \textit{FA:\ #6}\par\bigskip%
+        \selectfont #3%
+    } \stars{\pgfkeysvalueof{/climboptions/s}}%
+    \\#4\\\climbheight{#5}\pgfkeysvalueof{/climboptions/b} Bolts \textit{FA:\ #6}\par\bigskip%
   \endgroup
 }
 
