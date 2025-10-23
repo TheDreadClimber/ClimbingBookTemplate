@@ -14,6 +14,7 @@
 % {@param} #5 Height
 % {@param} #6 FA
   \begingroup
+    \pgfkeys{/climboptions/.cd,#1}%
     \edef\ydssort{\ydssortorder{#3}}% expand to plain text
     \index[sportroutesbygrade]{\ydssort @#3!#2}%
     \movename{#2}{\movedname}
@@ -31,13 +32,14 @@
 }
 
 \newcommand*\tradroute[6][]{%
-% {@param} #1 Consequences
+% {@param} #1 Options (optional)
 % {@param} #2 Name
 % {@param} #3 Grade
 % {@param} #4 Description
 % {@param} #5 Height
 % {@param} #6 FA
   \begingroup
+    \pgfkeys{/climboptions/.cd,#1}%
     \edef\ydssort{\ydssortorder{#3}}% expand to plain text
     \index[tradroutesbygrade]{\ydssort @#3!#2}%
     \movename{#2}{\movedname}
@@ -49,8 +51,8 @@
     } %
     \textbf{#2} {%
         \fontfamily{phv}%
-        \selectfont #3 #1%
-    }%
+        \selectfont #3 \pgfkeysvalueof{/climboptions/d}%
+    } \stars{\pgfkeysvalueof{/climboptions/s}}%
     \\#4\\\climbheight{#5}\textit{FA:\ #6}\par\bigskip%
   \endgroup
 }
@@ -101,14 +103,14 @@
 }
 
 \newcommand*\mixedtradroute[7][]{%
-% {@param} #1 Consequences
+% {@param} #1 Options (optional)
 % {@param} #2 Name
 % {@param} #3 Grade
 % {@param} #4 Description
 % {@param} #5 Height
-% {@param} #6 Bolts
-% {@param} #7 FA
+% {@param} #6 FA
   \begingroup
+    \pgfkeys{/climboptions/.cd,#1}%
     \edef\ydssort{\ydssortorder{#3}}% expand to plain text
     \index[tradroutesbygrade]{\ydssort @#3!#2}%
     \movename{#2}{\movedname}
@@ -119,9 +121,9 @@
     } %
     \textbf{#2} {%
         \fontfamily{phv}%
-        \selectfont #3 #1%
-    }%
-    \\#4\\\climbheight{#5}#6 Bolts \textit{FA:\ #7}\par\bigskip
+        \selectfont #3 \pgfkeysvalueof{/climboptions/d}%
+    } \stars{\pgfkeysvalueof{/climboptions/s}}%
+    \\#4\\\climbheight{#5} \pgfkeysvalueof{/climboptions/b} Bolts \textit{FA:\ #6}\par\bigskip
   \endgroup
 }
 
