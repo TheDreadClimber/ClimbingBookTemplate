@@ -73,7 +73,7 @@ B/0     0      0      0        0
 		\end{minipage}
     }{%
         \tradroute[X]{The Trad Route Name}{5.9}{Use anchors on the next route.}{70}{Santa Claus}
-        \sportroute{Sport Route Name}{5.10c}{Jug to the top.}{70}{5}{Jane Doe}
+        \sportroute[b=5]{Sport Route Name}{5.10c}{Jug to the top.}{70}{Jane Doe}
     }
     \climbingarea{Boulderfield Name}{%
 	    \begin{minipage}{0.15\textwidth}
@@ -86,13 +86,13 @@ B/0     0      0      0        0
         \climbingarea{Big Rock}{}{%
             \boulderproblem{A Problem}{V3}{Problem Description}{10}{Alan Smithee}
             \tradroute{Another Fun Route}{5.10a}{Make sure the route numbers are not indented}{5}{Jolly Roger}
-            \sportroute{Sporty McSportface}{5.10a}{\lipsum[1][9-10]}{5}{15}{Dr.\ Who}% chktex 8
+            \sportroute{Sporty McSportface}{5.10a}{number of bolts should have a question mark.}{5}{Dr.\ Who}% chktex 8
             \boulderproblem[3]{B Problem}{V0-}{\lipsum[1][11-12]}{15}{James Bond}% chktex 8
             \mixedtradroute{A Bolt or Two}{5.4}{\lipsum[1][13]}{100}{2}{Twista Bolten}
             \toproperoute{No Bolts}{5.6}{\lipsum[2][1-2]}{25}{Cher}% chktex 8
             \iceroute[M3]{Ice 9}{WI2}{\lipsum[2][3-4]}{25}{Bobby Drake}% chktex 8
 			\iceroute{I Scream}{WI3+}{You scream. We all scream for ice cream.}{2}{Clint Howard}% chktex 8
-            \sportroute{Unknown Height}{5.10a}{Unit of measure of height should not be printed.}{}{15}{Mr.\ Bean}
+            \sportroute[b=15,s=4]{Unknown Height}{5.10a}{Unit of measure of height should not be printed.}{}{Mr.\ Bean}
         }
     }{}
 }{}
