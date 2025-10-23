@@ -57,13 +57,15 @@
   \endgroup
 }
 
-\newcommand*\toproperoute[5]{%
-% {@param} #1 Name
-% {@param} #2 Grade
-% {@param} #3 Description
-% {@param} #4 Height
-% {@param} #5 FA
+\newcommand*\toproperoute[6][]{%
+% {@param} #1 Options (optional)
+% {@param} #2 Name
+% {@param} #3 Grade
+% {@param} #4 Description
+% {@param} #5 Height
+% {@param} #6 FA
   \begingroup
+    \pgfkeys{/climboptions/.cd,#1}%
     \edef\ydssort{\ydssortorder{#2}}% expand to plain text
     \index[sportroutesbygrade]{\ydssort @#2!#1}%
     \movename{#1}{\movedname}
@@ -72,11 +74,11 @@
         \pgfkeys{/csteps/fill color=Plum}%
         \cstep%
     } %
-    \textbf{#1} {%
+    \textbf{#2} {%
         \fontfamily{phv}%
-        \selectfont #2%
-    }%
-    \\#3\\\climbheight{#4}\textit{FA:\ #5}\par\bigskip
+        \selectfont #3%
+    } \stars{\pgfkeysvalueof{/climboptions/s}}%
+    \\#4\\\climbheight{#5}\textit{FA:\ #6}\par\bigskip
   \endgroup
 }
 
@@ -102,7 +104,7 @@
   \endgroup
 }
 
-\newcommand*\mixedtradroute[7][]{%
+\newcommand*\mixedtradroute[6][]{%
 % {@param} #1 Options (optional)
 % {@param} #2 Name
 % {@param} #3 Grade
