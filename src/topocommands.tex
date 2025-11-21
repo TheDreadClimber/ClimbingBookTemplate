@@ -7,3 +7,37 @@
     \pgfkeys{/csteps/fill color=#4}
     \node[black] at (#2){\Circled{#1}};
 }
+
+\newcommand{\compassrose}{%
+% To use this, add the following to your tikzpicture:
+% \node[rotate=-75] at (2,0) {
+%    \compassrose
+% };
+% Changing the roation and position.
+   \begin{tikzpicture}
+  % Define inner and outer radius
+    \def\outerradius{.625cm}
+    \def\innerradius{0.125cm}
+    \def\labelradius{.8cm}
+
+    % Define main and secondary directions (in degrees)
+    \def\mainangles{0, 90, 180, 270}
+    \def\secondaryangles{45, 135, 225, 315}
+
+    % Main points color and style
+    \foreach \angle/\label/\color in {90/N/red, 0/E/black, 270/S/black, 180/W/black} {
+        \draw[fill=\color, thick] (\angle:\innerradius) -- (\angle:\outerradius) -- 
+            ($(\angle:\outerradius)!0.5!(\angle+45:\innerradius)$) -- cycle;
+        \node[font=\small] at (\angle:\labelradius) {\label};
+    }
+    % Secondary points color and style
+    \foreach \angle/\label in {45/NE, 135/NW, 225/SW, 315/SE} {
+        \draw[fill=gray, thin] (\angle:\innerradius) -- (\angle:{\outerradius*0.7}) -- 
+            ($(\angle:{\outerradius})!0.5!(\angle+45:\innerradius)$) -- cycle;
+        \node[font=\tiny] at (\angle:{\labelradius}) {\label};
+    }
+
+    % Draw the outer circle for better visual appeal
+    \draw[thick] (0,0) circle (\outerradius);
+     \end{tikzpicture}
+}
