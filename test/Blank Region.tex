@@ -1,68 +1,7 @@
-\pgfplotstableread{
-grade   sport  trad
-<=.6    0      0
-.7      0      0
-.8      0      1
-.9      0      0
-.10     1      0
-.11     0      0
-.12     0      0
-.13     0      0
-.14     0      0
-}{\climbdataone}
-
-\def\chartoneh{%
-  \begin{climbhchart}
-	    \addplot table[y=sport,x=grade]{\climbdataone};% chktex 1
-        \addplot table[y=trad,x=grade]{\climbdataone};% chktex 1
-  \end{climbhchart}
-}
-\def\chartonev{%
-  \begin{climbvchart}
-	    \addplot table[x=sport,y=grade]{\climbdataone};% chktex 1
-        \addplot table[x=trad,y=grade]{\climbdataone};% chktex 1
-  \end{climbvchart}
-}
-
-\pgfplotstableread{
-grade   sport  trad   boulder  toprope
-B/0     0      0      0        0
-1/2     0      0      0        1
-3/4     0      0      1        0
-5/6     0      0      0        1
-7/8     0      0      0        6
-9/10    0      0      1        0
-11/12   0      0      0        4
-}{\climbdatatwo}
-
-\def\charttwoh{%
-    \begin{boulderhchart}
-        \addplot table[x=grade,y=sport]{\climbdatatwo};% chktex 1
-        \addplot table[x=grade,y=trad]{\climbdatatwo};% chktex 1
-        \addplot table[x=grade,y=boulder]{\climbdatatwo};% chktex 1
-		\addplot table[x=grade,y=toprope]{\climbdatatwo};% chktex 1
-    \end{boulderhchart}
-}
-
-\def\charttwov{%
-    \begin{bouldervchart}
-        \addplot table[y=grade,x=sport]{\climbdatatwo};% chktex 1
-        \addplot table[y=grade,x=trad]{\climbdatatwo};% chktex 1
-        \addplot table[y=grade,x=boulder]{\climbdatatwo};% chktex 1
-    \end{bouldervchart}
-}
-
 \climbingarea{Region 1}{%
     \climbingarea{Boulderfield Name}{%
-	    \begin{minipage}{0.15\textwidth}
-		    8 Routes\\
-	        {\charttwov}
-		\end{minipage}
-		\begin{minipage}{0.8\textwidth}
-            \climbheader{\lipsum[1][1]}{\lipsum[1][2-4]}{\lipsum[1][5-7]}{\lipsum[1][8]}% chktex 8
-		\end{minipage}
         \climbingarea{Big Rock}{}{%
             \sportroute[b=15,s=4]{Unknown Height}{5.10a}{Unit of measure of height should not be printed.}{}{Mr.\ Bean}
         }
     }{}
-}{}
+}{
