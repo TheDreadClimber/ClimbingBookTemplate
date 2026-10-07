@@ -96,7 +96,9 @@
 \usepackage{circledsteps}
 \usepackage{etoolbox} % Conditional logic and command modification utilities
 \usepackage[a4paper,left=9mm, right=9mm]{geometry}
-\usepackage{fancyhdr}
+\usepackage{fancyhdr} % Customizable headers and footers
+
+\usepackage{eso-pic} % Background images and page decorations
 \usepackage{graphicx}
 
 \usepackage[xindy]{imakeidx}
