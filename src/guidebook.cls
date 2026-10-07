@@ -135,6 +135,120 @@
 %----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
+%	COVER PAGE COMMAND
+%----------------------------------------------------------------------------------------
+
+% Cover page parameters
+\define@key{cover}{title}{\def\cover@title{#1}}
+\define@key{cover}{titlefontsize}{\def\cover@titlefontsize{#1}}
+\define@key{cover}{subtitle}{\def\cover@subtitle{#1}}
+\define@key{cover}{subtitlefontsize}{\def\cover@subtitlefontsize{#1}}
+\define@key{cover}{author}{\def\cover@author{#1}}
+\define@key{cover}{authorfontsize}{\def\cover@authorfontsize{#1}}
+\define@key{cover}{textcolor}{\def\cover@textcolor{#1}}
+\define@key{cover}{shadowcolor}{\def\cover@shadowcolor{#1}}
+\define@key{cover}{shadowoffset}{\def\cover@shadowoffset{#1}}
+\define@key{cover}{image}{\def\cover@image{#1}}
+\define@key{cover}{opacity}{\def\cover@opacity{#1}}
+\define@key{cover}{bgcolor}{\def\cover@bgcolor{#1}}
+
+% Cover page commands
+\NewDocumentCommand{\cover@init}{}{%
+	\def\cover@title{}
+	\def\cover@titlefontsize{\fontsize{48pt}{52pt}}
+	\def\cover@subtitle{}
+	\def\cover@subtitlefontsize{\fontsize{28pt}{30pt}}
+	\def\cover@author{}
+	\def\cover@authorfontsize{\fontsize{20pt}{22pt}}
+	\def\cover@textcolor{darkgrey}
+	\def\cover@shadowcolor{black}
+	\def\cover@shadowoffset{0.05cm}
+	\def\cover@image{}
+	\def\cover@opacity{1}
+	\def\cover@bgcolor{}
+}
+
+
+% Create a cover page
+\NewDocumentCommand{\makecoverpage}{+m}{%
+	% Initialize cover properties with defaults
+	\cover@init
+
+	% Process the key-value pairs
+	\setkeys{cover}{#1}
+
+	% Set flag to suppress page numbers on cover page
+	\nopagenumberstyletrue
+
+	% Set page counter before titlepage to ensure hyperref tracks it correctly
+	\setcounter{page}{\cookbook@startpage}
+	\phantomsection
+	\label{coverpage}
+	\begin{titlepage}
+		\thispagestyle{empty}
+		\noindent
+		\begin{adjustwidth}{\cookbook@bleedextension}{\cookbook@bleedextension}% Extend to page edges including bleed
+			\begin{tikzpicture}[remember picture, overlay]
+				% Background color
+				\ifx\cover@bgcolor\@empty\else
+					\fill[\cover@bgcolor]
+					(current page.south west) rectangle (current page.north east);
+				\fi
+
+				% Add cover image if provided
+				\ifx\cover@image\@empty\else
+					\begin{scope}
+						% Extend image into bleed area
+						\ifcookbook@bleedenabled
+							\clip ([xshift=\cookbook@scaledbleed,yshift=\cookbook@scaledbleed]current page.south west) rectangle ([xshift=-\cookbook@scaledbleed,yshift=-\cookbook@scaledbleed]current page.north east);
+							\path[fill overzoom image={\cover@image},fill image opacity={\cover@opacity}]
+							($(current page.south west)+(\the\cookbook@scaledbleed,\the\cookbook@scaledbleed)$)
+							rectangle
+							($(current page.north east)-(\the\cookbook@scaledbleed,\the\cookbook@scaledbleed)$);
+						\else
+							\clip (current page.south west) rectangle (current page.north east);
+							\path[fill overzoom image={\cover@image},fill image opacity={\cover@opacity}]
+							(current page.south west)
+							rectangle
+							(current page.north east);
+						\fi
+					\end{scope}
+				\fi
+
+				% Add title and subtitle with drop shadow for visibility
+				% First draw the shadow (offset behind the text)
+				\node[text=\cover@shadowcolor, font=\sourcesanspro\bfseries,
+					align=center] at ($(current page.center)+(\cover@shadowoffset,-\cover@shadowoffset)$) {
+					{\cover@titlefontsize\selectfont\MakeUppercase{\cover@title}}
+					\\[20pt]
+					\ifx\cover@subtitle\@empty
+					\\[10pt]
+					\else
+					{\cover@subtitlefontsize\selectfont\cover@subtitle}
+					\\[20pt]
+					\fi
+					{\cover@authorfontsize\selectfont\cover@author}
+				};
+				% Then draw the actual text on top
+				\node[text=\cover@textcolor, font=\sourcesanspro\bfseries,
+					align=center] at (current page.center) {
+					{\cover@titlefontsize\selectfont\MakeUppercase{\cover@title}}
+					\\[20pt]
+					\ifx\cover@subtitle\@empty
+					\\[10pt]
+					\else
+					{\cover@subtitlefontsize\selectfont\cover@subtitle}
+					\\[20pt]
+					\fi
+					{\cover@authorfontsize\selectfont\cover@author}
+				};
+			\end{tikzpicture}
+		\end{adjustwidth}
+	\end{titlepage}
+	\clearpage
+	\nopagenumberstylefalse % Clear flag after cover page
+
+%----------------------------------------------------------------------------------------
 %	TABLE OF CONTENTS
 %----------------------------------------------------------------------------------------
 % Set the TOC's name to "Table of Contents" instead of "Contents"
