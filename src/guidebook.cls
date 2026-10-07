@@ -127,6 +127,139 @@
 \usepackage{tikz}
 
 %----------------------------------------------------------------------------------------
+%	CUSTOM PAGE STYLES
+%----------------------------------------------------------------------------------------
+
+% Define length for page number box minimum height (defined once, used in \pagenumberbox)
+\newlength{\pagenumberbox@textheight}
+\newlength{\pagenumberbox@minimumheight}
+
+\NewDocumentCommand{\pagenumberbox}{m m}{%
+	\begin{tikzpicture}[remember picture, overlay]
+		\begin{pgfonlayer}{foreground}
+			\begin{scope}
+				\ifcookbook@bleedenabled
+					\setlength{\pagenumberbox@minimumheight}{\dimexpr1.5cm+\cookbook@bleedlength\relax}
+					\setlength{\pagenumberbox@textheight}{\dimexpr1.2cm+\cookbook@bleedlength\relax}
+				\else
+					\setlength{\pagenumberbox@minimumheight}{1.5cm}
+					\setlength{\pagenumberbox@textheight}{1.2cm}
+				\fi
+				\node[
+					text height=\pagenumberbox@textheight,
+					text depth=0.2cm,
+					draw,
+					fill=black,
+					text=white,
+					rectangle,
+					minimum width=0.8cm,
+					minimum height=\pagenumberbox@minimumheight,
+					anchor=#1
+				] at (#2) {\thepage};
+			\end{scope}
+		\end{pgfonlayer}
+	\end{tikzpicture}%
+}
+
+\fancypagestyle{custompagestyle}{
+	\fancyhf{} % Clear all header and footer fields
+	\renewcommand{\headrulewidth}{0pt} % Remove the line at the top of the header
+}
+
+% Flag to track if page numbers should be suppressed
+\newif\ifnopagenumberstyle
+\nopagenumberstylefalse
+
+% Helper macros to check if current page is left or right based on cookbook@leftpage setting
+% These create conditional flags that can be used with \ifcookbook@isleftpage and \ifcookbook@isrightpage
+\newif\ifcookbook@isleftpage
+\newif\ifcookbook@isrightpage
+
+% This command determines whether the current page is a "left" or "right" page based on:
+% 1. The user's configuration (left=even or left=odd)
+% 2. The actual page number (odd or even)
+%
+% The logic works as follows:
+% - If left=even: Even page numbers (2, 4, 6...) are left pages, odd (1, 3, 5...) are right
+% - If left=odd: Odd page numbers (1, 3, 5...) are left pages, even (2, 4, 6...) are right
+%
+% This is essential for proper page number placement and chapter/image positioning
+% in two-page spreads, as different book conventions use different page numbering schemes.
+\NewDocumentCommand{\cookbook@checkpageparity}{}{%
+	\def\cookbook@tempeven{even}%
+	\ifx\cookbook@leftpage\cookbook@tempeven
+		% Left pages are even (standard book convention)
+		\ifodd\value{page}%
+			% Current page is odd → it's a right page
+			\cookbook@isleftpagefalse
+			\cookbook@isrightpagetrue
+		\else
+			% Current page is even → it's a left page
+			\cookbook@isleftpagetrue
+			\cookbook@isrightpagefalse
+		\fi
+	\else
+		% Left pages are odd (alternative convention)
+		\ifodd\value{page}%
+			% Current page is odd → it's a left page
+			\cookbook@isleftpagetrue
+			\cookbook@isrightpagefalse
+		\else
+			% Current page is even → it's a right page
+			\cookbook@isleftpagefalse
+			\cookbook@isrightpagetrue
+		\fi
+	\fi
+}
+
+\AddToShipoutPictureFG{%
+	\ifnum\value{page}>0
+		% Draw bleed area boundaries if debug mode is enabled
+		\ifcookbook@bleeddebug
+			\begin{tikzpicture}[remember picture, overlay]
+				\ifcookbook@bleedenabled
+					% With margin-based bleed, current page = full PDF paper (including bleed)
+
+					% BLUE SOLID LINE = Bleed edge (actual PDF paper boundary)
+					\draw[blue, solid, line width=1pt]
+					(current page.south west) rectangle (current page.north east);
+
+					% RED DASHED LINE = Trim edge (where page will be cut, inset by bleed amount)
+					\draw[red, dashed, line width=1pt]
+					([xshift=\the\cookbook@bleedlength, yshift=\the\cookbook@bleedlength]current page.south west)
+					rectangle
+					([xshift=-\the\cookbook@bleedlength, yshift=-\the\cookbook@bleedlength]current page.north east);
+				\else
+					% When bleed is disabled, current page is the trim edge
+					\draw[red, dashed, line width=1pt]
+					(current page.south west) rectangle (current page.north east);
+				\fi
+			\end{tikzpicture}%
+		\fi
+		\ifnopagenumberstyle\else
+			\cookbook@checkpageparity
+			\ifcookbook@isrightpage
+				% Right page - number on the right
+				\ifcookbook@bleedenabled
+					\pagenumberbox{north east}{[xshift=-1cm-\the\cookbook@bleedlength, yshift=0.5cm]current page.north east}%
+				\else
+					\pagenumberbox{north east}{[xshift=-1cm, yshift=0.5cm]current page.north east}%
+				\fi
+			\else
+				% Left page - number on the left
+				\ifcookbook@bleedenabled
+					\pagenumberbox{north west}{[xshift=1cm+\the\cookbook@bleedlength, yshift=0.5cm]current page.north west}%
+				\else
+					\pagenumberbox{north west}{[xshift=1cm, yshift=0.5cm]current page.north west}%
+				\fi
+			\fi
+		\fi
+	\fi
+}
+
+\pagestyle{custompagestyle}
+
+%----------------------------------------------------------------------------------------
 %	CUSTOM COLORS
 %----------------------------------------------------------------------------------------
 
