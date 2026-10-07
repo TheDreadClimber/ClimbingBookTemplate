@@ -310,6 +310,54 @@
 %	FONTS
 %----------------------------------------------------------------------------------------
 
+\usepackage{fontspec} % Modern font selection for LuaLaTeX/XeLaTeX
+\usepackage{unicode-math} % Unicode math support
+\usepackage{newunicodechar} % Support for Unicode character mapping
+\usepackage{xfrac} % Inline fractions with proper formatting
+
+\setmainfont{TeX Gyre Pagella} % Palatino-like font with full Unicode support
+% Pin the emoji font to Noto Color Emoji, which ships with TeX Live, instead of
+% the platform default. This keeps emoji rendering identical across systems and
+% avoids a luaotfload/HarfBuzz crash ("attempt to index a nil value") when
+% multi-codepoint emoji (e.g. hot-pepper, which includes a variation selector)
+% are rendered with Apple Color Emoji on macOS. Must run after the math/font
+% packages are set up: calling it right after \usepackage{emoji} derails the
+% later math-mode configuration (\genfrac errors in ingredient fractions).
+\setemojifont{Noto Color Emoji}
+\setmathfont{TeX Gyre Pagella Math} % Matching math font
+
+% Map Unicode fraction characters to proper LaTeX fractions
+% Using \sfrac for inline fractions that look natural in text
+% Automated mapping using a list-based approach
+\ExplSyntaxOn
+\cs_new_protected:Npn \cb_define_fraction:nnn #1#2#3
+{
+	\AtBeginDocument{\newunicodechar{#1}{\sfrac{#2}{#3}}}
+}
+\clist_map_inline:nn
+{
+	{½}{1}{2},
+	{⅓}{1}{3}, {⅔}{2}{3},
+	{¼}{1}{4}, {¾}{3}{4},
+	{⅛}{1}{8}, {⅜}{3}{8}, {⅝}{5}{8}, {⅞}{7}{8},
+	{⅙}{1}{6}
+}
+{ \cb_define_fraction:nnn #1 }
+\ExplSyntaxOff
+
+% Activate the language after Unicode character setup completes
+% This ensures our translation captions are applied and babel shorthands
+% don't interfere with the Unicode fraction processing
+\AtBeginDocument{\selectlanguage{\cookbook@language}}
+
+% Source Sans Pro font command (using system sans-serif as fallback)
+\NewDocumentCommand{\sourcesanspro}{+m}{{\sffamily\selectfont #1}}
+
+\usepackage{microtype} % Improve typography
+
+\usepackage{titlesec} % Format titles
+\usepackage{tocloft} % Customize Table of Contents, List of Figures, and List of Tables
+
 %----------------------------------------------------------------------------------------
 %	CUSTOM GRAPHICS
 %----------------------------------------------------------------------------------------
