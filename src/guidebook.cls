@@ -138,9 +138,9 @@
 	\begin{tikzpicture}[remember picture, overlay]
 		\begin{pgfonlayer}{foreground}
 			\begin{scope}
-				\ifcookbook@bleedenabled
-					\setlength{\pagenumberbox@minimumheight}{\dimexpr1.5cm+\cookbook@bleedlength\relax}
-					\setlength{\pagenumberbox@textheight}{\dimexpr1.2cm+\cookbook@bleedlength\relax}
+				\ifguidebook@bleedenabled
+					\setlength{\pagenumberbox@minimumheight}{\dimexpr1.5cm+\guidebook@bleedlength\relax}
+					\setlength{\pagenumberbox@textheight}{\dimexpr1.2cm+\guidebook@bleedlength\relax}
 				\else
 					\setlength{\pagenumberbox@minimumheight}{1.5cm}
 					\setlength{\pagenumberbox@textheight}{1.2cm}
@@ -170,10 +170,10 @@
 \newif\ifnopagenumberstyle
 \nopagenumberstylefalse
 
-% Helper macros to check if current page is left or right based on cookbook@leftpage setting
-% These create conditional flags that can be used with \ifcookbook@isleftpage and \ifcookbook@isrightpage
-\newif\ifcookbook@isleftpage
-\newif\ifcookbook@isrightpage
+% Helper macros to check if current page is left or right based on guidebook@leftpage setting
+% These create conditional flags that can be used with \ifguidebook@isleftpage and \ifguidebook@isrightpage
+\newif\ifguidebook@isleftpage
+\newif\ifguidebook@isrightpage
 
 % This command determines whether the current page is a "left" or "right" page based on:
 % 1. The user's configuration (left=even or left=odd)
@@ -185,29 +185,29 @@
 %
 % This is essential for proper page number placement and chapter/image positioning
 % in two-page spreads, as different book conventions use different page numbering schemes.
-\NewDocumentCommand{\cookbook@checkpageparity}{}{%
-	\def\cookbook@tempeven{even}%
-	\ifx\cookbook@leftpage\cookbook@tempeven
+\NewDocumentCommand{\guidebook@checkpageparity}{}{%
+	\def\guidebook@tempeven{even}%
+	\ifx\guidebook@leftpage\guidebook@tempeven
 		% Left pages are even (standard book convention)
 		\ifodd\value{page}%
 			% Current page is odd → it's a right page
-			\cookbook@isleftpagefalse
-			\cookbook@isrightpagetrue
+			\guidebook@isleftpagefalse
+			\guidebook@isrightpagetrue
 		\else
 			% Current page is even → it's a left page
-			\cookbook@isleftpagetrue
-			\cookbook@isrightpagefalse
+			\guidebook@isleftpagetrue
+			\guidebook@isrightpagefalse
 		\fi
 	\else
 		% Left pages are odd (alternative convention)
 		\ifodd\value{page}%
 			% Current page is odd → it's a left page
-			\cookbook@isleftpagetrue
-			\cookbook@isrightpagefalse
+			\guidebook@isleftpagetrue
+			\guidebook@isrightpagefalse
 		\else
 			% Current page is even → it's a right page
-			\cookbook@isleftpagefalse
-			\cookbook@isrightpagetrue
+			\guidebook@isleftpagefalse
+			\guidebook@isrightpagetrue
 		\fi
 	\fi
 }
@@ -215,9 +215,9 @@
 \AddToShipoutPictureFG{%
 	\ifnum\value{page}>0
 		% Draw bleed area boundaries if debug mode is enabled
-		\ifcookbook@bleeddebug
+		\ifguidebook@bleeddebug
 			\begin{tikzpicture}[remember picture, overlay]
-				\ifcookbook@bleedenabled
+				\ifguidebook@bleedenabled
 					% With margin-based bleed, current page = full PDF paper (including bleed)
 
 					% BLUE SOLID LINE = Bleed edge (actual PDF paper boundary)
@@ -226,9 +226,9 @@
 
 					% RED DASHED LINE = Trim edge (where page will be cut, inset by bleed amount)
 					\draw[red, dashed, line width=1pt]
-					([xshift=\the\cookbook@bleedlength, yshift=\the\cookbook@bleedlength]current page.south west)
+					([xshift=\the\guidebook@bleedlength, yshift=\the\guidebook@bleedlength]current page.south west)
 					rectangle
-					([xshift=-\the\cookbook@bleedlength, yshift=-\the\cookbook@bleedlength]current page.north east);
+					([xshift=-\the\guidebook@bleedlength, yshift=-\the\guidebook@bleedlength]current page.north east);
 				\else
 					% When bleed is disabled, current page is the trim edge
 					\draw[red, dashed, line width=1pt]
@@ -237,18 +237,18 @@
 			\end{tikzpicture}%
 		\fi
 		\ifnopagenumberstyle\else
-			\cookbook@checkpageparity
-			\ifcookbook@isrightpage
+			\guidebook@checkpageparity
+			\ifguidebook@isrightpage
 				% Right page - number on the right
-				\ifcookbook@bleedenabled
-					\pagenumberbox{north east}{[xshift=-1cm-\the\cookbook@bleedlength, yshift=0.5cm]current page.north east}%
+				\ifguidebook@bleedenabled
+					\pagenumberbox{north east}{[xshift=-1cm-\the\guidebook@bleedlength, yshift=0.5cm]current page.north east}%
 				\else
 					\pagenumberbox{north east}{[xshift=-1cm, yshift=0.5cm]current page.north east}%
 				\fi
 			\else
 				% Left page - number on the left
-				\ifcookbook@bleedenabled
-					\pagenumberbox{north west}{[xshift=1cm+\the\cookbook@bleedlength, yshift=0.5cm]current page.north west}%
+				\ifguidebook@bleedenabled
+					\pagenumberbox{north west}{[xshift=1cm+\the\guidebook@bleedlength, yshift=0.5cm]current page.north west}%
 				\else
 					\pagenumberbox{north west}{[xshift=1cm, yshift=0.5cm]current page.north west}%
 				\fi
@@ -314,13 +314,13 @@
 	\nopagenumberstyletrue
 
 	% Set page counter before titlepage to ensure hyperref tracks it correctly
-	\setcounter{page}{\cookbook@startpage}
+	\setcounter{page}{\guidebook@startpage}
 	\phantomsection
 	\label{coverpage}
 	\begin{titlepage}
 		\thispagestyle{empty}
 		\noindent
-		\begin{adjustwidth}{\cookbook@bleedextension}{\cookbook@bleedextension}% Extend to page edges including bleed
+		\begin{adjustwidth}{\guidebook@bleedextension}{\guidebook@bleedextension}% Extend to page edges including bleed
 			\begin{tikzpicture}[remember picture, overlay]
 				% Background color
 				\ifx\cover@bgcolor\@empty\else
@@ -332,12 +332,12 @@
 				\ifx\cover@image\@empty\else
 					\begin{scope}
 						% Extend image into bleed area
-						\ifcookbook@bleedenabled
-							\clip ([xshift=\cookbook@scaledbleed,yshift=\cookbook@scaledbleed]current page.south west) rectangle ([xshift=-\cookbook@scaledbleed,yshift=-\cookbook@scaledbleed]current page.north east);
+						\ifguidebook@bleedenabled
+							\clip ([xshift=\guidebook@scaledbleed,yshift=\guidebook@scaledbleed]current page.south west) rectangle ([xshift=-\guidebook@scaledbleed,yshift=-\guidebook@scaledbleed]current page.north east);
 							\path[fill overzoom image={\cover@image},fill image opacity={\cover@opacity}]
-							($(current page.south west)+(\the\cookbook@scaledbleed,\the\cookbook@scaledbleed)$)
+							($(current page.south west)+(\the\guidebook@scaledbleed,\the\guidebook@scaledbleed)$)
 							rectangle
-							($(current page.north east)-(\the\cookbook@scaledbleed,\the\cookbook@scaledbleed)$);
+							($(current page.north east)-(\the\guidebook@scaledbleed,\the\guidebook@scaledbleed)$);
 						\else
 							\clip (current page.south west) rectangle (current page.north east);
 							\path[fill overzoom image={\cover@image},fill image opacity={\cover@opacity}]
