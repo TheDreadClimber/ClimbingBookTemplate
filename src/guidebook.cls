@@ -96,6 +96,7 @@
 \usepackage{circledsteps}
 \usepackage{etoolbox} % Conditional logic and command modification utilities
 \usepackage[a4paper,left=9mm, right=9mm]{geometry}
+\usepackage{changepage} % Dynamic page margin and text block indentation
 \usepackage{fancyhdr} % Customizable headers and footers
 
 \usepackage{eso-pic} % Background images and page decorations
