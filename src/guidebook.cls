@@ -26,7 +26,7 @@
 \def\guidebook@startpage{1}
 \def\guidebook@listbefore{0pt}
 \def\guidebook@columnsep{0.05\textwidth}
-\def\guidebook@ingredientitemsep{0.003\textheight}
+\def\guidebook@routeitemsep{0.003\textheight}
 \def\guidebook@instructionitemsep{0.005\textheight}
 
 % Bleed configuration
