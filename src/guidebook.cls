@@ -95,7 +95,6 @@
 \usepackage{caption}
 \usepackage{circledsteps}
 \usepackage{etoolbox} % Conditional logic and command modification utilities
-\usepackage[a4paper,left=9mm, right=9mm]{geometry}
 
 \setlength{\parindent}{0pt}
 
