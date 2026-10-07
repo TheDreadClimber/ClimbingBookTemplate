@@ -313,7 +313,10 @@
 %----------------------------------------------------------------------------------------
 %	CUSTOM GRAPHICS
 %----------------------------------------------------------------------------------------
-\usepackage{tikz}
+\usepackage{tikz} % Vector graphics and diagram creation
+\usetikzlibrary{calc} % Coordinate calculations and transformations
+\usetikzlibrary{shadows} % Drop shadows and shadow effects for shapes
+\usetikzlibrary{backgrounds} % Background layers for layered graphics
 
 %----------------------------------------------------------------------------------------
 %	CUSTOM PAGE STYLES
