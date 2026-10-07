@@ -121,6 +121,10 @@
 % Remove paragraph indentations.
 \setlength\parindent{0pt}
 
+% Calculate bleed extension for edge content (negative margin adjustment)
+\newlength{\cookbook@bleedextension}
+\setlength{\cookbook@bleedextension}{0pt}
+
 %----------------------------------------------------------------------------------------
 %	FONTS
 %----------------------------------------------------------------------------------------
