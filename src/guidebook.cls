@@ -96,6 +96,9 @@
 \usepackage{circledsteps}
 \usepackage{etoolbox} % Conditional logic and command modification utilities
 \usepackage[a4paper,left=9mm, right=9mm]{geometry}
+
+\setlength{\parindent}{0pt}
+
 \usepackage{changepage} % Dynamic page margin and text block indentation
 \usepackage{fancyhdr} % Customizable headers and footers
 
@@ -114,16 +117,195 @@
 %----------------------------------------------------------------------------------------
 %	LANGUAGE STRINGS (using babel)
 %----------------------------------------------------------------------------------------
-
 %----------------------------------------------------------------------------------------
 %	MARGINS AND BLEED
 %----------------------------------------------------------------------------------------
-% Remove paragraph indentations.
-\setlength\parindent{0pt}
+
+% Commands to override margin values (call after \documentclass)
+% Usage: \setmargintop{2cm}, \setmarginbottom{2cm}, \setmarginleft{2cm}, \setmarginright{2cm}
+\NewDocumentCommand{\setmargintop}{m}{%
+	\def\guidebook@margintop{#1}%
+	\geometry{top=#1}%
+}
+\NewDocumentCommand{\setmarginbottom}{m}{%
+	\def\guidebook@marginbottom{#1}%
+	\geometry{bottom=#1}%
+}
+\NewDocumentCommand{\setmarginleft}{m}{%
+	\def\guidebook@marginleft{#1}%
+	\if@twoside
+		\geometry{inner=#1}%
+	\else
+		\geometry{left=#1}%
+	\fi
+}
+\NewDocumentCommand{\setmarginright}{m}{%
+	\def\guidebook@marginright{#1}%
+	\if@twoside
+		\geometry{outer=#1}%
+	\else
+		\geometry{right=#1}%
+	\fi
+}
+
+% Store original paper dimensions before bleed is applied
+\newlength{\guidebook@origpaperwidth}
+\newlength{\guidebook@origpaperheight}
+
+% Helper command to apply bleed geometry adjustments
+\NewDocumentCommand{\guidebook@applybleedgeometry}{}{%
+	% FIRST: Store original paper dimensions BEFORE any changes
+	\setlength{\guidebook@origpaperwidth}{\paperwidth}%
+	\setlength{\guidebook@origpaperheight}{\paperheight}%
+
+	% Calculate new paper dimensions
+	\setlength{\guidebook@tempwidth}{\dimexpr\paperwidth+2\guidebook@bleedlength\relax}%
+	\setlength{\guidebook@tempheight}{\dimexpr\paperheight+2\guidebook@bleedlength\relax}%
+	% Expand dimension values to strings
+	\edef\guidebook@paperwidthval{\the\guidebook@tempwidth}%
+	\edef\guidebook@paperheightval{\the\guidebook@tempheight}%
+	% Calculate new margins that include bleed
+	\edef\guidebook@leftwithbleed{\the\dimexpr\guidebook@marginleft+\guidebook@bleedlength\relax}%
+	\edef\guidebook@rightwithbleed{\the\dimexpr\guidebook@marginright+\guidebook@bleedlength\relax}%
+	\edef\guidebook@topwithbleed{\the\dimexpr\guidebook@margintop+\guidebook@bleedlength\relax}%
+	\edef\guidebook@bottomwithbleed{\the\dimexpr\guidebook@marginbottom+\guidebook@bleedlength\relax}%
+	\if@twoside
+		% For twoside documents, use inner/outer
+		\geometry{
+			paperwidth=\guidebook@paperwidthval,
+			paperheight=\guidebook@paperheightval,
+			inner=\guidebook@leftwithbleed,
+			outer=\guidebook@rightwithbleed,
+			top=\guidebook@topwithbleed,
+			bottom=\guidebook@bottomwithbleed,
+		}%
+	\else
+		% For oneside documents, use left/right
+		\geometry{
+			paperwidth=\guidebook@paperwidthval,
+			paperheight=\guidebook@paperheightval,
+			left=\guidebook@leftwithbleed,
+			right=\guidebook@rightwithbleed,
+			top=\guidebook@topwithbleed,
+			bottom=\guidebook@bottomwithbleed,
+		}%
+	\fi
+}
+
+% Helper command to calculate and set bleed extension
+% This centralizes the bleed extension calculation
+\NewDocumentCommand{\guidebook@updatebleedextension}{}{%
+	\ifguidebook@bleedenabled
+		% With bleed: extend by margin + bleed to reach the paper edge
+		\setlength{\guidebook@bleedextension}{\dimexpr-\guidebook@margintop-\guidebook@bleedlength\relax}%
+	\else
+		\setlength{\guidebook@bleedextension}{-\guidebook@margintop}%
+	\fi
+}
+
+% Helper macros to get effective paper dimensions for content positioning
+% When bleed is enabled, use original paper dimensions for positioning
+% When disabled, use current paper dimensions
+\NewDocumentCommand{\guidebook@contentpaperwidth}{}{%
+	\ifguidebook@bleedenabled
+		\guidebook@origpaperwidth
+	\else
+		\paperwidth
+	\fi
+}
+
+\NewDocumentCommand{\guidebook@contentpaperheight}{}{%
+	\ifguidebook@bleedenabled
+		\guidebook@origpaperheight
+	\else
+		\paperheight
+	\fi
+}
+
+% Command to override the bleed value (call after \documentclass)
+% Usage: \setbleedvalue{0.125in} or \setbleedvalue{3.175mm}
+% This sets the bleed amount that will be used when bleed is enabled
+\NewDocumentCommand{\setbleedvalue}{m}{%
+	% Update the length register
+	\setlength{\guidebook@bleedlength}{#1}%
+	% Update scaled bleed
+	\guidebook@updatescaledbleed
+	% If bleed is already enabled, recalculate geometry with new bleed value
+	\ifguidebook@bleedenabled
+		\guidebook@applybleedgeometry
+		\guidebook@updatebleedextension
+	\fi
+}
+
+% Command to enable bleed and optionally set a custom value
+% Usage: \enablebleed or \enablebleed{0.125in}
+\NewDocumentCommand{\enablebleed}{O{}}{%
+	\guidebook@bleedenabledtrue%
+	\ifx#1\@empty\else
+		% Update the length register
+		\setlength{\guidebook@bleedlength}{#1}%
+	\fi
+	% Update scaled bleed
+	\guidebook@updatescaledbleed
+	% Apply bleed to geometry
+	\guidebook@applybleedgeometry
+	\guidebook@updatebleedextension
+}
 
 % Calculate bleed extension for edge content (negative margin adjustment)
-\newlength{\cookbook@bleedextension}
-\setlength{\cookbook@bleedextension}{0pt}
+\newlength{\guidebook@bleedextension}
+\setlength{\guidebook@bleedextension}{0pt}
+
+% Command to set gutter margin (for print binding)
+% Usage: \setguttermargin{0.5in} or \setguttermargin{1.25cm}
+% Adds the specified value to the inner margin for binding (left on right pages, right on left pages)
+% Note: Gutter is only for two-sided printing, so it always uses inner margin
+\NewDocumentCommand{\setguttermargin}{m}{%
+	\def\guidebook@guttermargin{#1}%
+	\geometry{inner=\dimexpr\guidebook@marginleft+\guidebook@guttermargin\relax}%
+}
+
+% Command to set bleed image ratio
+% Usage: \setbleedimageratio{1} or \setbleedimageratio{0.5}
+% Defines how much of the images should be in the bleed (1 = full bleed, 0.5 = half bleed, etc.)
+\NewDocumentCommand{\setbleedimageratio}{m}{%
+	\def\guidebook@bleedimageratio{#1}%
+	% Update scaled bleed
+	\guidebook@updatescaledbleed
+}
+
+% Set up geometry - load first, then adjust for bleed if needed
+% This approach allows us to reference \paperwidth and \paperheight after they're set
+% Use inner/outer for twoside documents, left/right for oneside documents
+\if@twoside
+	\usepackage[
+		top=\guidebook@margintop,
+		bottom=\guidebook@marginbottom,
+		inner=\guidebook@marginleft,
+		outer=\guidebook@marginright,
+		%showframe % Enable to display margin boundaries for layout debugging
+	]{geometry}
+\else
+	\usepackage[
+		top=\guidebook@margintop,
+		bottom=\guidebook@marginbottom,
+		left=\guidebook@marginleft,
+		right=\guidebook@marginright,
+		%showframe % Enable to display margin boundaries for layout debugging
+	]{geometry}
+\fi
+
+% Apply bleed adjustments if enabled
+% When bleed is enabled, we:
+% 1. Increase paper size by 2*bleed (bleed on each side)
+% 2. Shift content area by bleed amount (hoffset/voffset)
+% 3. Maintain text margins (these become safety margins from trim edge)
+\ifguidebook@bleedenabled
+	% Adjust geometry for bleed - now we can reference \paperwidth and \paperheight
+	\guidebook@applybleedgeometry
+\fi
+% Set bleed extension for edge content (works for both enabled and disabled states)
+\guidebook@updatebleedextension
 
 %----------------------------------------------------------------------------------------
 %	FONTS
