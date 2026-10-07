@@ -95,7 +95,7 @@
 \usepackage{caption}
 \usepackage{circledsteps}
 \usepackage{etoolbox} % Conditional logic and command modification utilities
-
+\usepackage{emoji} % Color emoji support (requires LuaLaTeX)
 \setlength{\parindent}{0pt}
 
 \usepackage{changepage} % Dynamic page margin and text block indentation
