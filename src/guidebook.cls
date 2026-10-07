@@ -348,7 +348,7 @@
 % Activate the language after Unicode character setup completes
 % This ensures our translation captions are applied and babel shorthands
 % don't interfere with the Unicode fraction processing
-\AtBeginDocument{\selectlanguage{\cookbook@language}}
+\AtBeginDocument{\selectlanguage{\guidebook@language}}
 
 % Source Sans Pro font command (using system sans-serif as fallback)
 \NewDocumentCommand{\sourcesanspro}{+m}{{\sffamily\selectfont #1}}
