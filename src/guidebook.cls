@@ -502,7 +502,10 @@
 %----------------------------------------------------------------------------------------
 %	CUSTOM COLORS
 %----------------------------------------------------------------------------------------
-
+% Define custom color palette for the cookbook template
+\definecolor{darkgrey}{HTML}{1a1a1a} % Dark grey for text and accents
+\definecolor{lightgrey}{HTML}{808080} % Light grey for separators and subtle elements
+\definecolor{paleorange}{HTML}{eb984e} % Pale orange accent color
 %----------------------------------------------------------------------------------------
 %	TEXT STYLING COMMANDS
 %----------------------------------------------------------------------------------------
